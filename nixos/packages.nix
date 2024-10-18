@@ -16,6 +16,8 @@ obs-studio
 wofi
 kdenlive
 discord
+spotify
+spotify-player
 
 # coding / hacking / ccs
 neovim
@@ -27,6 +29,7 @@ pipx
 python312Packages.cli-helpers
 python312Packages.netifaces
 python312Packages.pip
+valgrind
 xonsh
 # (python3.withPackages (ps: with ps; [ requests ]))
 
@@ -52,6 +55,7 @@ wget
 
 # gui tooling
 gobject-introspection
+swaylock
 feh
 
 # wm

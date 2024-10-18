@@ -131,9 +131,20 @@
         "wl-paste --type image --watch cliphist store"
       ];
 
+      # keybinds
       bind = [
-        "$alt, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
+        # applications
+        "$win, D, exec, discord"
+        "$win, E, exec, nemo"
+        "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "$win, O, exec, obsidian"
+        "$win, O, exec, spotify"
+        "$win, V, exec, firefox --ProfileManager"
+        "$win, Q, exec, virt-manager"
+
+        "$win, L, exec, swaylock"
+        "$alt, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
         "$alt, Return, exec, kitty"
         "$alt SHIFT, Q, killactive,"
         "$alt SHIFT, E, exit,"
@@ -218,15 +229,6 @@
         # Brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-
-        # applications
-        "$win, D, exec, discord"
-        "$win, E, exec, nemo"
-        "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
-        "$win, O, exec, obsidian"
-        "$win, V, exec, firefox --ProfileManager"
-        "$win, Q, exec, virt-manager"
-
         # Waybar
         "$alt, B, exec, pkill -SIGUSR1 waybar"
         "$alt, W, exec, pkill -SIGUSR2 waybar"
