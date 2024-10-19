@@ -139,7 +139,7 @@
         "$win, E, exec, nemo"
         "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$win, O, exec, obsidian"
-        "$win, O, exec, spotify"
+        "$win, S, exec, spotify"
         "$win, V, exec, firefox --ProfileManager"
         "$win, Q, exec, virt-manager"
 
