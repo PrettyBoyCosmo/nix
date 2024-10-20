@@ -24,6 +24,7 @@ neovim
 vim
 gcc
 clang
+ghidra
 python3
 pipx
 python312Packages.cli-helpers
@@ -54,12 +55,13 @@ brightnessctl
 wget
 
 # gui tooling
+    gsettings
 gobject-introspection
 swaylock
 feh
 
 # wm
-conky
+    adapta-gtk-theme
 swww
 xwayland
 wl-clipboard

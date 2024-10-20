@@ -127,6 +127,7 @@
         "duplicati-server"
         "waybar"
         "nm-applet"
+        "gsettings set org.gnome.desktop.interface gtk-theme 'Adapta-Nokto'"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
@@ -138,6 +139,7 @@
         "$win, D, exec, discord"
         "$win, E, exec, nemo"
         "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "$win, M, exec, wdisplays"
         "$win, O, exec, obsidian"
         "$win, S, exec, spotify"
         "$win, V, exec, firefox --ProfileManager"
