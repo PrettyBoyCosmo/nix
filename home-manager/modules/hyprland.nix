@@ -118,7 +118,8 @@
       windowrule = [
         "float, ^(imv)$"
         "float, ^(mpv)$"
-        "opacity 0.85, kitty"   # This makes only Kitty 85% opaque
+        "opacity 0.85, kitty"
+        "opacity 0.85, obsidian"
       ];
 
       exec-once = [

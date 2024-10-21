@@ -21,6 +21,7 @@ spotify-player
 
 # coding / hacking / ccs
 neovim
+    stripe-cli
 vim
 gcc
 clang
@@ -55,7 +56,6 @@ brightnessctl
 wget
 
 # gui tooling
-    gsettings
 gobject-introspection
 swaylock
 feh
