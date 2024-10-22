@@ -14,7 +14,7 @@
         })
         {
           # Custom keymaps
-          "<leader>s" = ":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>";
+          "<leader>s" = "[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]";
           "<leader>x" = "<cmd>!chmod +x %<CR>";
           "n" = "nzzzv";
           "N" = "Nzzzv";

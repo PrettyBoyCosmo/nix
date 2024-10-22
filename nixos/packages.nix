@@ -23,7 +23,10 @@ spotify-player
 neovim
     stripe-cli
 vim
+    nmap
 gcc
+    gdb
+    gef
 clang
 ghidra
 python3
@@ -37,6 +40,7 @@ xonsh
 
 # cli tooling
 bat
+openvpn
 grim
 eza
 zoxide
