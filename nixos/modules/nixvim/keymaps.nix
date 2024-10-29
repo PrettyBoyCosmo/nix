@@ -14,7 +14,7 @@
         })
         {
           # Custom keymaps
-          "<leader>s" = "[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]";
+          "<leader>s" = ":lua vim.cmd('%s/\\<' .. vim.fn.expand('<cword>') .. '\\>/' .. vim.fn.expand('<cword>') .. '/gI')<CR>";
           "<leader>x" = "<cmd>!chmod +x %<CR>";
           "n" = "nzzzv";
           "N" = "Nzzzv";

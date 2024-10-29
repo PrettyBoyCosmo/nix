@@ -127,6 +127,7 @@
         "swww img ~/media/photos/wallpapers/opensource.png"
         "duplicati-server"
         "waybar"
+        "flameshot"
         "nm-applet"
         "gsettings set org.gnome.desktop.interface gtk-theme 'Adapta-Nokto'"
         "wl-paste --type text --watch cliphist store"
@@ -139,10 +140,13 @@
         # applications
         "$win, D, exec, discord"
         "$win, E, exec, nemo"
-        "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
+        # "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "$win, F, exec, flameshot gui"
+        "$win, I, exec, cinnamon-settings"
         "$win, M, exec, wdisplays"
         "$win, O, exec, obsidian"
         "$win, S, exec, spotify"
+        "$win, U, exec, cinnamon-settings sound"
         "$win, V, exec, firefox --ProfileManager"
         "$win, Q, exec, virt-manager"
 

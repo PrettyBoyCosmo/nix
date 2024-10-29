@@ -61,6 +61,7 @@ wget
 
 # gui tooling
 gobject-introspection
+flameshot
 swaylock
 feh
 
