@@ -191,7 +191,7 @@ aliases.update({
     'la': 'exa --icons -a',
     'lla': 'exa --icons -la',
     'pfchangs': 'proxychains4',
-    'neo': f'neofetch --ascii $HOME/.dotfiles/.config/neofetch/planet-cosmo.ascii --ascii_colors 255 30 --colors 30 255 255 30 7 255',
+    'neo':'fastfetch -c neofetch.jsonc',
     'acf': 'auto-cpufreq --stats',
     'r': 'ranger .',
     'tkill': 'tmux kill-server',
