@@ -140,8 +140,8 @@
         # applications
         "$win, D, exec, discord"
         "$win, E, exec, nemo"
-        # "$win, F, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$win, F, exec, flameshot gui"
+        "$win, H, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$win, I, exec, cinnamon-settings"
         "$win, M, exec, wdisplays"
         "$win, O, exec, obsidian"
@@ -238,8 +238,8 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
         # Waybar
         "$alt, B, exec, pkill -SIGUSR1 waybar"
+        "$alt SHIFT, B, exec, pkill waybar & hyprctl dispatch exec waybar"
         "$alt, W, exec, pkill -SIGUSR2 waybar"
-
       ];
 
       # Move/resize windows with alt + LMB/RMB and dragging
