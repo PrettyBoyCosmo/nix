@@ -178,7 +178,7 @@
 }
 
 window#waybar {
-    background: rgba(21, 21, 21, 0.83); 
+    background: rgba(0, 0, 0, 0.8); 
     border: 3px solid rgba(255, 255, 255, 1); /* Updated to make the border fully white */
     border-radius: 6px;
 }

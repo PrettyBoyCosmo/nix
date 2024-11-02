@@ -145,6 +145,7 @@
         "$win, I, exec, cinnamon-settings"
         "$win, M, exec, wdisplays"
         "$win, O, exec, obsidian"
+        "$win, R, exec, obs"
         "$win, S, exec, spotify"
         "$win, U, exec, cinnamon-settings sound"
         "$win, V, exec, firefox --ProfileManager"

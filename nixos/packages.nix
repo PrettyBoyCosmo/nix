@@ -40,6 +40,7 @@ xonsh
 
 # cli tooling
 bat
+    p7zip
 openvpn
 grim
 eza
