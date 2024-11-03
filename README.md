@@ -7,4 +7,3 @@ home-manager switch --flake .
 ```
 
 ## Scrots:
-![fastfetch](fastfetch.png)
