@@ -34,6 +34,7 @@ pipx
 python312Packages.cli-helpers
 python312Packages.netifaces
 python312Packages.pip
+    wireshark
 valgrind
 xonsh
 # (python3.withPackages (ps: with ps; [ requests ]))

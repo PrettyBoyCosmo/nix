@@ -124,7 +124,7 @@
 
       exec-once = [
         "swww init"
-        "swww img ~/media/photos/wallpapers/opensource.png"
+        "swww img ~/media/photos/wallpapers/wave.png"
         "duplicati-server"
         "waybar"
         "flameshot"
