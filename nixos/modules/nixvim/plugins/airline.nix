@@ -7,8 +7,9 @@
     settings = {
       powerline_fonts = true;
       skip_empty_sections = true;
-      # theme = "minimalist";  # Set your desired theme here
-      theme = "base16";  # Set your desired theme here
+      theme = "minimalist";
+      # theme = "base16";
+      # theme = "transparent";
     };
   };
 

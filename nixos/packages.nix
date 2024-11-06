@@ -7,91 +7,90 @@
 
   environment.systemPackages = with pkgs; [
 
-# apps
-obsidian
-duplicati
-firefox
-kitty
-obs-studio
-wofi
-kdenlive
-discord
-spotify
-spotify-player
+    # apps
+    audacity
+    obsidian
+    duplicati
+    firefox
+    kitty
+    obs-studio
+    wofi
+    kdenlive
+    discord
+    spotify
+    spotify-player
 
-# coding / hacking / ccs
-neovim
+    # coding / hacking / ccs
+    neovim
     stripe-cli
-vim
+    vim
     nmap
-gcc
+    gcc
     gdb
     gef
-clang
-ghidra
-python3
-pipx
-python312Packages.cli-helpers
-python312Packages.netifaces
-python312Packages.pip
+    clang
+    ghidra
+    python3
+    pipx
+    python312Packages.cli-helpers
+    python312Packages.netifaces
+    python312Packages.pip
     wireshark
-valgrind
-xonsh
-# (python3.withPackages (ps: with ps; [ requests ]))
+    valgrind
+    xonsh
+    # (python3.withPackages (ps: with ps; [ requests ]))
 
-# cli tooling
-bat
+    # cli tooling
+    bat
     p7zip
-openvpn
-grim
-eza
-zoxide
-slurp
-file
-tree
-fzf
-curl
-git
-ripgrep
-fastfetch
-htop
-ffmpeg
-tmux
-unzip
-brightnessctl
-wget
+    openvpn
+    grim
+    eza
+    zoxide
+    slurp
+    file
+    tree
+    fzf
+    curl
+    git
+    ripgrep
+    fastfetch
+    htop
+    ffmpeg
+    tmux
+    unzip
+    brightnessctl
+    wget
 
-# gui tooling
-gobject-introspection
-flameshot
-swaylock
-feh
+    # gui tooling
+    gobject-introspection
+    flameshot
+    swaylock
+    feh
 
-# wm
+    # wm
     adapta-gtk-theme
-swww
-xwayland
-wl-clipboard
-cliphist
-hyprland
-seatd
-xdg-desktop-portal-hyprland
-polybar
-waybar
-
-# system
-cups
-pipewire
-wdisplays
-pulseaudio
-pamixer
-home-manager
-spice-vdagent
-libsForQt5.qtstyleplugin-kvantum
-libsForQt5.qt5ct
-
+    swww
+    xwayland
+    wl-clipboard
+    cliphist
+    hyprland
+    seatd
+    xdg-desktop-portal-hyprland
+    polybar
+    waybar
+    
+    # system
+    cups
+    pipewire
+    wdisplays
+    pulseaudio
+    pamixer
+    home-manager
+    spice-vdagent
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
   ];
-
 
   fonts.packages = with pkgs; [
     # jetbrains-mono
