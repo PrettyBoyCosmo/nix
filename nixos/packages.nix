@@ -77,12 +77,15 @@
     hyprland
     seatd
     xdg-desktop-portal-hyprland
+    xdg-utils
+    vesktop
     polybar
     waybar
     
     # system
     cups
     pipewire
+    wireplumber
     wdisplays
     pulseaudio
     pamixer
