@@ -1,10 +1,10 @@
 {
   programs.nixvim = {
 
-    clipboard = {
-      register = "unnamedplus";
-      providers.wl-copy.enable = true;
-    };
+    # clipboard = {
+    #   register = "unnamedplus";
+    #   providers.wl-copy.enable = true;
+    # };
 
     opts = {
       updatetime = 100; # Faster completion
