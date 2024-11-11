@@ -26,6 +26,11 @@
         pattern = [ "*.asm" ];
         command = "0r ~/development/templates/template.asm";
       }
+      {
+        event = [ "BufNewFile" ];
+        pattern = [ "*.h" ];
+        command = "0r ~/development/templates/template.h";
+      }
 
       {
         event = "Syntax";

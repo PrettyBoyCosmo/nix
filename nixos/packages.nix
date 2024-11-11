@@ -12,13 +12,14 @@
     obsidian
     duplicati
     firefox
+    gimp
     kitty
     obs-studio
     wofi
     kdenlive
-    discord
     spotify
     spotify-player
+    vlc
 
     # coding / hacking / ccs
     neovim
@@ -38,6 +39,9 @@
     wireshark
     valgrind
     xonsh
+    linux-manual
+    man-pages
+    man-pages-posix
     # (python3.withPackages (ps: with ps; [ requests ]))
 
     # cli tooling
@@ -61,6 +65,9 @@
     unzip
     brightnessctl
     wget
+    qemu
+    virt-manager
+    libvirt
 
     # gui tooling
     gobject-introspection
@@ -76,6 +83,7 @@
     cliphist
     hyprland
     seatd
+    xdg-desktop-portal
     xdg-desktop-portal-hyprland
     xdg-utils
     vesktop

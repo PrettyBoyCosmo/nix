@@ -1,4 +1,5 @@
 ## Install:
+
 ```bash
 git clone https://github.com/PrettyBoyCosmo/nix.git
 cd $HOME/nix

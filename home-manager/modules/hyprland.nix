@@ -126,6 +126,7 @@
         "swww init"
         "swww img ~/media/photos/wallpapers/wave.png"
         "duplicati-server"
+        "xwaylandvideobridge"
         "waybar"
         "flameshot"
         "nm-applet"
