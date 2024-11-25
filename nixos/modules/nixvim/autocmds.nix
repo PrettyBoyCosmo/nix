@@ -1,6 +1,7 @@
 {
   programs.nixvim = {
     autoCmd = [
+      # program templates
       {
         event = [ "BufNewFile" ];
         pattern = [ "*.c" ];
@@ -32,26 +33,18 @@
         command = "0r ~/development/templates/template.h";
       }
 
+      # custom syntax highlights
       {
-        event = "Syntax";
+        event = "BufReadPost";
         pattern = "*";
-        command = "highlight CustomTODO guifg=#ff8800 gui=bold";
-      }
-      {
-        event = "Syntax";
-        pattern = "*";
-        command = "highlight CustomNOTE guifg=#00ff88 gui=italic";
+        command = "syntax clear cTodo | syntax match CustomTODO /\\<TODO:/ containedin=cCommentL | highlight CustomTODO guifg=#ff9900 gui=italic";
       }
       {
         event = "BufReadPost";
         pattern = "*";
-        command = "syntax match CustomTODO /\\<TODO:/";
+        command = "syntax match CustomNOTE /\\<NOTE:/ containedin=cCommentL | highlight CustomNOTE guifg=#ff9900 gui=italic";
       }
-      {
-        event = "BufReadPost";
-        pattern = "*";
-        command = "syntax match CustomNOTE /\\<NOTE:/";
-      }
+
     ];
   };
 }

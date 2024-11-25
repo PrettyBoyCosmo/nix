@@ -52,6 +52,7 @@
     drivers = [ pkgs.hplip ];
   };
   services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.lightdm.greeter.enable = true;
   services.xserver.desktopManager.cinnamon.enable = true;
   services.blueman.enable = true;
 

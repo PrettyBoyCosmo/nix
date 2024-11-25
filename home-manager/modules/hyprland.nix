@@ -141,7 +141,7 @@
         # applications
         "$win, D, exec, discord"
         "$win, E, exec, nemo"
-        "$win, F, exec, flameshot gui"
+        "$win, F, exec, flameshot launcher"
         "$win, H, exec, grim -g \"$(slurp)\" - | wl-copy"
         "$win, I, exec, cinnamon-settings"
         "$win, M, exec, wdisplays"

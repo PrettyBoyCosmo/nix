@@ -33,6 +33,12 @@ def command_output(command):
 """
 SYSTEM
 """
+
+# choose nix shell
+def nix_shell(shell_name):
+    shell_name = shell_name[0] 
+    os.system(f'nix-shell /home/bluecosmo/nix/shells/{shell_name}.nix --run xonsh')
+
 # get environment name (custom prompt)
 def env_name_cust(pre_chars='[', post_chars='] ■ '):
     env_path = __xonsh__.env.get('VIRTUAL_ENV', '')
@@ -238,6 +244,7 @@ aliases.update({
     'duckencode': f'python2 {DEVELOPMENT}/rubberducky/encoder/duckencoder.py -i payload.txt',
     'onlyrat': 'python3 $HOME/.MK01-OnlyRAT/main.py',
     'key': 'python3 $HOME/SkeletonKey/main.py',   
+    'shell': nix_shell,
 })
 
 # zoxide
