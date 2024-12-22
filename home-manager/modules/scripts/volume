@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # i3 volume control
 
 # Get the name of the default sink

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Read the first line of the "acpi" command output
 open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
@@ -15,7 +15,7 @@ $percent = $2;
 $color = "";
 
 # Set up the full text
-$full_text = "BAT: <span foreground='#999999'>$percent%</span> ";
+$full_text = "BAT: <span foreground='#999999'>$percent%</span>";
 
 if ($status eq 'Discharging') {
     # Set color based on percentage

@@ -7,8 +7,14 @@
 
   environment.systemPackages = with pkgs; [
     autorandr
+    acpi
+    arandr
+    xorg.xrandr
+    xdotool
+    libnotify
     audacity
     anki
+    busybox
     duplicati
     firefox
     gimp
