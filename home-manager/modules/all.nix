@@ -6,6 +6,7 @@
     ./gtk.nix
     ./hyprland.nix
     ./i3.nix
+    ./i3blocks.nix
     ./kitty.nix
     ./tmux.nix
     ./wofi.nix
