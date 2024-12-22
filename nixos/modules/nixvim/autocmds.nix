@@ -37,7 +37,7 @@
       {
         event = "BufReadPost";
         pattern = "*";
-        command = "syntax clear cTodo | syntax match CustomTODO /\\<TODO:/ containedin=cCommentL | highlight CustomTODO guifg=#ff9900 gui=italic";
+        command = "syntax clear cTodo | syntax match CustomTODO /\\<TODO:/ containedin=cCommentL | highlight CustomTODO guifg=#ff9900 gui=bold";
       }
       {
         event = "BufReadPost";

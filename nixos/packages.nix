@@ -6,22 +6,22 @@
   };
 
   environment.systemPackages = with pkgs; [
-
-    # apps
+    autorandr
     audacity
-    obsidian
+    anki
     duplicati
     firefox
     gimp
     kitty
+    kdenlive
+    obsidian
     obs-studio
     wofi
-    kdenlive
+    rofi
     spotify
     spotify-player
+    tor-browser
     vlc
-
-    # coding / hacking / ccs
     neovim
     stripe-cli
     vim
@@ -43,9 +43,8 @@
     man-pages
     man-pages-posix
     # (python3.withPackages (ps: with ps; [ requests ]))
-
-    # cli tooling
     bat
+    tor
     p7zip
     openvpn
     grim
@@ -68,14 +67,10 @@
     qemu
     virt-manager
     libvirt
-
-    # gui tooling
     gobject-introspection
     flameshot
     swaylock
     feh
-
-    # wm
     adapta-gtk-theme
     swww
     xwayland
@@ -89,8 +84,6 @@
     vesktop
     polybar
     waybar
-    
-    # system
     cups
     pipewire
     wireplumber
@@ -101,6 +94,11 @@
     spice-vdagent
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
+    i3
+    i3status
+    i3lock
+    i3blocks  # Optional for a more customizable bar
+    picom
   ];
 
   fonts.packages = with pkgs; [

@@ -45,17 +45,22 @@
   services.thermald.enable = true;
 
   # services
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+    displayManager.lightdm.enable = true;
+    displayManager.lightdm.greeter.enable = true;
+    desktopManager.cinnamon.enable = true;
+  };
+
   services.tailscale.enable = true;
   services.printing = {
     enable = true;
     drivers = [ pkgs.hplip ];
   };
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.greeter.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
-  services.blueman.enable = true;
 
+  # bluetooth
+  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
