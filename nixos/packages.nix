@@ -6,9 +6,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    nitrogen
     autorandr
     acpi
     arandr
+    lxappearance
+    numlockx
     xorg.xrandr
     xdotool
     libnotify
@@ -103,6 +106,7 @@
     i3
     i3status
     i3lock
+    i3lock-fancy
     i3blocks  # Optional for a more customizable bar
     picom
   ];

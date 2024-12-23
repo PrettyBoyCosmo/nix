@@ -44,14 +44,28 @@
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
 
-  # services
+  # services 
   services.xserver = {
     enable = true;
-    windowManager.i3.enable = true;
+    layout = "us";
+
     displayManager.lightdm.enable = true;
-    displayManager.lightdm.greeter.enable = true;
-    desktopManager.cinnamon.enable = true;
+    # displayManager.autoLogin.enable = true;
+    # displayManager.autoLogin.user = "bluecosmo";
+    desktopManager.cinnamon.enable = true; # disable for auto i3
+    windowManager.i3.enable = true;
+    displayManager.defaultSession = "none+i3";
+
+    # displayManager = {
+    #   lightdm.enable = true;
+    #   lightdm.greeter = {
+    #     enable = true;
+    #     allow-session-switching = false;
+    #   };
+    #   defaultSession = "none+i3";
+    # };
   };
+
 
   services.tailscale.enable = true;
   services.printing = {
