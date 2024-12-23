@@ -47,7 +47,7 @@
 
       fileencoding = "utf-8"; # File-content encoding for the current buffer
 
-      termguicolors = false; # Disables 24-bit RGB color in the |TUI|
+      termguicolors = true; # Disables 24-bit RGB color in the |TUI|
 
       spell = false; # Highlight spelling mistakes (local to window)
       wrap = true; # Prevent text from wrapping

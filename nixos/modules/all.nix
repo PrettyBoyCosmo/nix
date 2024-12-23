@@ -9,6 +9,5 @@
 	./user.nix
 	./virtmanager.nix
 	./xserver.nix
-	./nixvim/nixvim.nix
   ];
 }

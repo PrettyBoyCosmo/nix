@@ -14,5 +14,6 @@
     ./wofi.nix
     ./waybar.nix
     ./xonsh.nix
+	./nixvim/nixvim.nix
   ];
 }

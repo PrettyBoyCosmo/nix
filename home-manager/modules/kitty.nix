@@ -16,8 +16,9 @@
       map ctrl+shift+l send_text all clear\n
 
       foreground #CDD6F4
-      background #151515
+      # background #151515
       # background #1E1E2E
+      background #0f1c21
 
       color0  #45475A
       color1  #F38BA8

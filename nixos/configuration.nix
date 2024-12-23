@@ -50,8 +50,8 @@
     layout = "us";
 
     displayManager.lightdm.enable = true;
-    # displayManager.autoLogin.enable = true;
-    # displayManager.autoLogin.user = "bluecosmo";
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "bluecosmo";
     desktopManager.cinnamon.enable = true; # disable for auto i3
     windowManager.i3.enable = true;
     displayManager.defaultSession = "none+i3";
