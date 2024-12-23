@@ -8,6 +8,7 @@
     ./i3.nix
     ./i3blocks.nix
     ./kitty.nix
+    ./picom.nix
     ./tmux.nix
     ./wofi.nix
     ./waybar.nix

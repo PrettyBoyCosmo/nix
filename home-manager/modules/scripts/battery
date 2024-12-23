@@ -35,7 +35,7 @@ if ($status eq 'Discharging') {
     }
 
     # Append discharging information
-    $full_text .= "<span foreground='$color'>DIS</span>";
+    $full_text .= "<span foreground='$color'> DIS</span>";
 
     # Append time information
     if ($acpi =~ /(\d\d:\d\d):/) {
@@ -43,7 +43,7 @@ if ($status eq 'Discharging') {
     }
 } elsif ($status eq 'Charging') {
     # Charging information
-    $full_text .= "<span foreground='#999999'>CHR</span>";
+    $full_text .= "<span foreground='#999999'> CHR</span>";
 
     # Append time information to the full text
     if ($acpi =~ /(\d\d:\d\d):/) {
