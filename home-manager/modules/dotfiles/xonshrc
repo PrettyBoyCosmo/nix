@@ -49,30 +49,77 @@ def env_name_cust(pre_chars='[', post_chars='] ■ '):
 # animated-wallpaper
 def animated_wallpaper(wp):
     wp = wp[0]
+import os
 
 # set wallpaper (wp)
 def set_wallpaper(args):
+    if len(args) < 1:
+        print("Usage: wp <option> <wallpaper>")
+        return None
 
-    # list wallpaper
     option = args[0]
-    if (option == "ls"):
+    if option == "ls":
         os.system(f'exa --icons {WALLPAPER_DIR}')
         return None
 
-    # animated
-    wallpaper = args[1]
-    if (option == "animated"):
-        os.system(f'bash {WALLPAPER_DIR}/animated-wallpaper.sh {WALLPAPER_DIR}/{wallpaper}')
+    if len(args) < 2:
+        print("Usage: wp <option> <wallpaper>")
         return None
 
-    # static
+    wallpaper = args[1]
+    if option == "animated":
+        wallpaper_path = os.path.join(WALLPAPER_DIR, wallpaper)
+        if os.path.exists(wallpaper_path):
+            os.system(f'bash {WALLPAPER_DIR}/animated-wallpaper.sh {wallpaper_path}')
+        else:
+            print(f"Error: Animated wallpaper {wallpaper} not found.")
+        return None
+
+    # Automatically handle common extensions
+    common_extensions = ['.png', '.jpg', '.jpeg', '.bmp']
+    wallpaper_path = None
     for root, dirs, files in os.walk(WALLPAPER_DIR):
         for file in files:
             name, ext = os.path.splitext(file)
-            if name == wallpaper:
-                os.system(f'cp {WALLPAPER_DIR}/{file} {WALLPAPER_DIR}/wallpaper')
-                os.system(f'feh --bg-{option} {WALLPAPER_DIR}/wallpaper')
+            if name == wallpaper or file == wallpaper:
+                wallpaper_path = os.path.join(root, file)
+                break
+            elif wallpaper in name and ext.lower() in common_extensions:
+                wallpaper_path = os.path.join(root, file)
+                break
+
+    if wallpaper_path:
+        print(f"Wallpaper found: {wallpaper_path}")
+        os.system(f'cp {wallpaper_path} {os.path.join(WALLPAPER_DIR, "wallpaper")}')
+        os.system(f'feh --bg-{option} {os.path.join(WALLPAPER_DIR, "wallpaper")}')
+    else:
+        print(f"Error: Wallpaper {wallpaper} not found in {WALLPAPER_DIR}.")
+
     return None
+
+# # set wallpaper (wp)
+# def set_wallpaper(args):
+#
+#     # list wallpaper
+#     option = args[0]
+#     if (option == "ls"):
+#         os.system(f'exa --icons {WALLPAPER_DIR}')
+#         return None
+#
+#     # animated
+#     wallpaper = args[1]
+#     if (option == "animated"):
+#         os.system(f'bash {WALLPAPER_DIR}/animated-wallpaper.sh {WALLPAPER_DIR}/{wallpaper}')
+#         return None
+#
+#     # static
+#     for root, dirs, files in os.walk(WALLPAPER_DIR):
+#         for file in files:
+#             name, ext = os.path.splitext(file)
+#             if name == wallpaper:
+#                 os.system(f'cp {WALLPAPER_DIR}/{file} {WALLPAPER_DIR}/wallpaper')
+#                 os.system(f'feh --bg-{option} {WALLPAPER_DIR}/wallpaper')
+#     return None
 
 # set screen layout [display] (d)
 def set_display(mode):
