@@ -8,4 +8,11 @@ home-manager switch --flake .
 ```
 
 ## Scrots:
-![fastfetch](fastfetch.png)
+#### i3
+![i3](assets/i30.png)
+![i3](assets/i31.png)
+![i3](assets/i32.png)
+![i3](assets/i33.png)
+
+#### Hyprland
+![fastfetch](assets/fastfetch.png)
