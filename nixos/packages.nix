@@ -6,9 +6,14 @@
   };
 
   environment.systemPackages = with pkgs; [
+    libreoffice-qt6-fresh
+    spicetify-cli
     nitrogen
+    xorg.xdpyinfo
+    xclip
     autorandr
     acpi
+    stalonetray
     arandr
     lxappearance
     numlockx
