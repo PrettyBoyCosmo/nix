@@ -7,9 +7,10 @@
     settings = {
       powerline_fonts = true;
       skip_empty_sections = true;
-      theme = "minimalist";
+      # theme = "minimalist";
+      # theme = "base16_atelier_lakeside";
       # theme = "base16";
-      # theme = "transparent";
+      theme = "transparent";
     };
   };
 

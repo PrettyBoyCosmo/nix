@@ -18,7 +18,8 @@
           " ╚██████╗╚██████╔╝███████║██║ ╚═╝ ██║╚██████╔╝██████╔╝██║╚██████╔╝██║ ╚═╝ ██║╚██████╗███████║ "
           "  ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝ ╚══════╝╚══════╝ "
           ""
-          "             • Malware Development • Offensive Development • Payload Development •            "
+          "              Malware Development  Offensive Development  Payload Development             "
+          # "             • Malware Development • Offensive Development • Payload Development •            "
         ];
       }
       {
@@ -30,7 +31,8 @@
         val = [
           {
             type = "button";
-            val = "📄 • New File";
+            # val = "📄 • New File";
+            val = " • New File";
             opts = {
               hl = "AlphaButton";
               shortcut = "n";
@@ -44,7 +46,8 @@
           }
           {
             type = "button";
-            val = "📁 • Open File";
+            # val = "📁 • Open File";
+            val = " • Open File";
             opts = {
               hl = "AlphaButton";
               shortcut = "o";
@@ -58,7 +61,8 @@
           }
           {
             type = "button";
-            val = "🪨 • Obsidian Vault";
+            # val = "🪨 • Obsidian Vault";
+            val = " • Obsidian Vault";
             opts = {
               hl = "AlphaButton";
               shortcut = "v";
@@ -72,7 +76,8 @@
           }
           {
             type = "button";
-            val = "👀 • Recently Used";
+            # val = "👀 • Recently Used";
+            val = " • Recently Used";
             opts = {
               hl = "AlphaButton";
               shortcut = "r";
@@ -86,7 +91,8 @@
           }
           {
             type = "button";
-            val = "🔎 • Find Text";
+            # val = "🔎 • Find Text";
+            val = " • Find Text";
             opts = {
               hl = "AlphaButton";
               shortcut = "f";
@@ -100,7 +106,8 @@
           }
           {
             type = "button";
-            val = "🤖 • Edit Config";
+            # val = "🤖 • Edit Config";
+            val = " • Edit Config";
             opts = {
               hl = "AlphaButton";
               shortcut = "e";
@@ -114,7 +121,8 @@
           }
           {
             type = "button";
-            val = "🙈 • Quit NeoVim";
+            # val = "🙈 • Quit NeoVim";
+            val = " • Quit NeoVim";
             opts = {
               hl = "AlphaButton";
               shortcut = "q";
@@ -138,7 +146,8 @@
           position = "center";
         };
         type = "text";
-        val = "🐂 NeoVim";
+        # val = "🐂 NeoVim";
+        val = " NeoVim";
       }
     ];
   };
