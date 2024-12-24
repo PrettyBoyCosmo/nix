@@ -1,0 +1,20 @@
+{
+  imports = [
+    ./airline.nix
+    ./alpha.nix
+    ./cmp.nix
+    ./comment.nix
+    ./floaterm.nix
+    ./harpoon.nix
+    ./lsp.nix
+    ./mini.nix
+    ./nix.nix
+    ./neotree.nix
+    ./notify.nix
+    ./obsidian.nix
+    ./telescope.nix
+    ./transparent.nix
+    ./tmux-navigator.nix
+    ./treesitter.nix
+  ];
+}
