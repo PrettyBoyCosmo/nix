@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# i3 volume control
+# i3 volume control with dynamic colors and custom formatting
 
 # Get the name of the default sink
 sink_name=$(pactl info | grep 'Default Sink' | awk '{print $3}')
@@ -13,13 +13,25 @@ volume=$(echo "$output" | tr -d '%')
 # Check if the sink is muted
 mute_status=$(pactl list sinks | grep -A 15 "Name: $sink_name" | awk '/Mute/{print $2; exit}')
 
-# Print the volume level or mute status
+# Determine the foreground color based on volume level
 if [ "$mute_status" == "yes" ]; then
-    echo "VOL: <span foreground='#999999'>MUTED</span>"
+    volume_color="#B48EAD" # Magenta for muted (from Kitty scheme)
 else
-    echo "VOL: <span foreground='#999999'>$volume%</span>"
+    if [ "$volume" -lt 30 ]; then
+        volume_color="#94E2D5" # Green for low volume
+    elif [ "$volume" -lt 70 ]; then
+        volume_color="#EBCB8B" # Yellow for medium volume
+    else
+        volume_color="#BF616A" # Red for high volume
+    fi
 fi
 
+# Print the volume level or mute status
+if [ "$mute_status" == "yes" ]; then
+    echo "<span foreground='#000000' background='#ffffff'> VOL </span><span foreground='#ffbf00' background='#0f1c21aa'> MUTED</span>"
+else
+    echo "<span foreground='#000000' background='#ffffff'> VOL </span><span foreground='$volume_color' background='#0f1c21aa'> $volume%</span>"
+fi
 
 # Define click events
 case $BLOCK_BUTTON in
@@ -33,4 +45,3 @@ case $BLOCK_BUTTON in
         pactl set-sink-volume "$sink_name" -5%
         ;;
 esac
-

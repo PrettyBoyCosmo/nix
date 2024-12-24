@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "<span foreground='#000000' background='#ffffff'> DISK </span>\
+<span foreground='#cc66ff' background='#0f1c21aa'> $(df -h / | awk 'NR==2 {print $4}')</span>"
+

@@ -7,4 +7,4 @@ window_id=$(xdotool getactivewindow)
 class_name=$(xprop -id $window_id | grep 'WM_CLASS' | awk '{print $4}')
 
 # Print the class name (usually the application name)
-echo "$class_name "
+echo "<span foreground='#EBCB8B' background='#0f1c21aa'> $class_name </span>"

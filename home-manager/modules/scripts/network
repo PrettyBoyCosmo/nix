@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+# Define interfaces and states
+interfaces=("WLO1" "ENP0")
+vpn_states=("TAIL" "OVPN")
+current_interface_index=0
+current_vpn_index=0
+mode="ip" # "ip" or "vpn"
+
+# Persistent state storage
+state_file="/tmp/network_status_state"
+
+# Load state if available
+if [ -f "$state_file" ]; then
+    source "$state_file"
+else
+    echo "mode=$mode" > "$state_file"
+    echo "current_interface_index=$current_interface_index" >> "$state_file"
+    echo "current_vpn_index=$current_vpn_index" >> "$state_file"
+fi
+
+# Function to save the state
+save_state() {
+    echo "mode=$mode" > "$state_file"
+    echo "current_interface_index=$current_interface_index" >> "$state_file"
+    echo "current_vpn_index=$current_vpn_index" >> "$state_file"
+}
+
+# Function to get IP address of an interface
+get_ip() {
+    local iface=$1
+    ip -o -4 addr show "${iface,,}" 2>/dev/null | awk '{print $4}' | cut -d'/' -f1
+}
+
+# Function to get VPN status
+get_vpn_status() {
+    local vpn=$1
+    case $vpn in
+        TAIL)
+            if tailscale status 2>/dev/null | grep -q '^100\.'; then
+                echo "CONNECTED"
+            else
+                echo "DISCONNECTED"
+            fi
+            ;;
+        OVPN)
+            ip -o -4 addr show tun0 &>/dev/null && echo "CONNECTED" || echo "DISCONNECTED"
+            ;;
+    esac
+}
+
+# Log BLOCK_BUTTON value for debugging
+echo "BLOCK_BUTTON=$BLOCK_BUTTON" >> /tmp/network_debug.log
+
+# Handle click and scroll events only if BLOCK_BUTTON is set
+if [ -n "$BLOCK_BUTTON" ]; then
+    case $BLOCK_BUTTON in
+        1) # Left click: Switch to VPN status
+            if [ "$mode" == "ip" ]; then
+                mode="vpn"
+            else
+                mode="ip"
+            fi
+            save_state
+            ;;
+        4) # Scroll up: Switch between interfaces or VPNs
+            if [ "$mode" == "ip" ]; then
+                current_interface_index=$(( (current_interface_index + 1) % ${#interfaces[@]} ))
+            else
+                current_vpn_index=$(( (current_vpn_index + 1) % ${#vpn_states[@]} ))
+            fi
+            save_state
+            ;;
+        5) # Scroll down: Switch between interfaces or VPNs
+            if [ "$mode" == "ip" ]; then
+                current_interface_index=$(( (current_interface_index - 1 + ${#interfaces[@]}) % ${#interfaces[@]} ))
+            else
+                current_vpn_index=$(( (current_vpn_index - 1 + ${#vpn_states[@]}) % ${#vpn_states[@]} ))
+            fi
+            save_state
+            ;;
+    esac
+fi
+
+# Handle display logic
+if [ "$mode" == "ip" ]; then
+    current_interface=${interfaces[$current_interface_index]}
+    ip_address=$(get_ip "$current_interface")
+    if [ -z "$ip_address" ]; then
+        ip_address="<span foreground='#BF616A' background='#0f1c21aa'>X.X.X.X</span>" # Red for no IP
+    else
+        ip_address="<span foreground='#88C0D0' background='#0f1c21aa'>$ip_address</span>" # Cyan for valid IP
+    fi
+    echo "<span foreground='#000000' background='#ffffff'> $current_interface </span> $ip_address"
+else
+    current_vpn=${vpn_states[$current_vpn_index]}
+    vpn_status=$(get_vpn_status "$current_vpn")
+    if [ "$vpn_status" == "CONNECTED" ]; then
+        status_color="#A3BE8C" # Green for connected
+    else
+        status_color="#D08770" # Orange for disconnected
+    fi
+    echo "<span foreground='#000000' background='#ffffff'> $current_vpn </span><span foreground='$status_color' background='#0f1c21aa'> $vpn_status</span>"
+fi
+
