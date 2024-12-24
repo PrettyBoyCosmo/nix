@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define interfaces and states
-interfaces=("WLO1" "ENP0")
+interfaces=("WLO1" "ENP0" "TUN0")  # Added TUN0
 vpn_states=("TAIL" "OVPN")
 current_interface_index=0
 current_vpn_index=0
@@ -87,11 +87,11 @@ if [ "$mode" == "ip" ]; then
     current_interface=${interfaces[$current_interface_index]}
     ip_address=$(get_ip "$current_interface")
     if [ -z "$ip_address" ]; then
-        ip_address="<span foreground='#BF616A' background='#0f1c21aa'>X.X.X.X</span>" # Red for no IP
+        ip_address="<span foreground='#D08770' background='#0f1c21aa'>X.X.X.X</span>" # Orange for no IP
     else
-        ip_address="<span foreground='#88C0D0' background='#0f1c21aa'>$ip_address</span>" # Cyan for valid IP
+        ip_address="<span foreground='#A3BE8C' background='#0f1c21aa'>$ip_address</span>" # Green for valid IP
     fi
-    echo "<span foreground='#000000' background='#ffffff'> $current_interface </span> $ip_address"
+    echo "<span foreground='#000000' background='#A3BE8C'> $current_interface </span> $ip_address"
 else
     current_vpn=${vpn_states[$current_vpn_index]}
     vpn_status=$(get_vpn_status "$current_vpn")
@@ -100,6 +100,6 @@ else
     else
         status_color="#D08770" # Orange for disconnected
     fi
-    echo "<span foreground='#000000' background='#ffffff'> $current_vpn </span><span foreground='$status_color' background='#0f1c21aa'> $vpn_status</span>"
+    echo "<span foreground='#000000' background='#A3BE8C'> $current_vpn </span><span foreground='$status_color' background='#0f1c21aa'> $vpn_status</span>"
 fi
 

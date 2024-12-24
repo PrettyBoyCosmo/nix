@@ -50,7 +50,7 @@ if ($cpu_usage >= $t_crit) {
 }
 
 # Print short_text and full_text with themed colors
-printf "<span foreground='#000000' background='#ffffff'> CPU </span><span foreground='%s' background='#0f1c21aa'> %.2f%%</span>\n", $color, $cpu_usage;
+printf "<span foreground='#000000' background='#94E2D5'> CPU </span><span foreground='%s' background='#0f1c21aa'> %.2f%%</span>\n", $color, $cpu_usage;
 
 # Print color for bar appearance if needed
 if ($cpu_usage >= $t_crit) {

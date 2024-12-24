@@ -5,7 +5,7 @@
       bold_font        auto
       italic_font      auto
       bold_italic_font auto
-      font_size        22.0
+      font_size        18.0
       disable_ligatures never
       clipboard_control write-clipboard write-primary no-append
 

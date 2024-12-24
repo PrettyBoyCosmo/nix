@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Define the number of icons and icon size
+NUM_ICONS=10
+ICON_SIZE=24
+SPACING=10           # Add 10 pixels of spacing between icons
+EFFECTIVE_ICON_SIZE=$((ICON_SIZE + SPACING)) # Include spacing in the calculation
+TRAY_WIDTH=$((NUM_ICONS * EFFECTIVE_ICON_SIZE)) # Tray width with spacing
+
+# Get the screen width
+SCREEN_WIDTH=$(xdpyinfo | awk '/dimensions:/ {print $2}' | cut -d'x' -f1)
+
+# Calculate the horizontal offset for centering
+OFFSET=$(( (SCREEN_WIDTH - TRAY_WIDTH) / 2 ))
+
+# Launch stalonetray
+stalonetray --geometry ${NUM_ICONS}x1+${OFFSET}+0 \
+            --slot-size ${ICON_SIZE}x${ICON_SIZE} \
+            --background "#0f1c21" \
+            --grow-gravity S \
+            --sticky \
+            --skip-taskbar \
+            --tint-color "#0f1c21" \
+            --tint-level 255 \
+            --transparent \
+            --window-strut bottom
+

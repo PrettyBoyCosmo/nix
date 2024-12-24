@@ -15,17 +15,14 @@ $percent = $2;
 $color = "";
 
 # Set up the full text
-$full_text = "<span foreground='#000000' background='#ffffff'> BAT </span><span foreground='#B48EAD' background='#0f1c21aa'> $percent%</span>";
+$full_text = "<span foreground='#000000' background='#B48EAD'> BAT </span><span foreground='#B48EAD' background='#0f1c21aa'> $percent%</span>";
 if ($status eq 'Discharging') {
     # Set color based on percentage
     if ($percent < 20) {
         $color = "#BF616A"; # Red
-    } elsif ($percent < 40) {
-        $color = "#EBCB8B"; # Orange/Yellow
-    } elsif ($percent < 75) {
-        $color = "#88C0D0"; # Cyan
-    } else {
-        $color = "#94E2D5"; # Green
+    }
+    else {
+        $color = "#859900"; # Green
     }
 
     # Check for low battery and exit with code 33
@@ -34,7 +31,7 @@ if ($status eq 'Discharging') {
     }
 
     # Append discharging information
-    $full_text .= "<span foreground='#000000' background='#ffffff'> DIS </span>";
+    $full_text .= " <span foreground='#000000' background='#859900'> DIS </span>";
 
     # Append time information
     if ($acpi =~ /(\d\d:\d\d):/) {
@@ -42,11 +39,11 @@ if ($status eq 'Discharging') {
     }
 } elsif ($status eq 'Charging') {
     # Charging information
-    $full_text .= "<span foreground='#000000' background='#ffffff'> CHR </span>";
+    $full_text .= " <span foreground='#000000' background='#859900'> CHR </span>";
 
     # Append time information to the full text
     if ($acpi =~ /(\d\d:\d\d):/) {
-        $full_text .= " <span foreground='#4C566A' background='#0f1c21aa'>$1</span>";
+        $full_text .= " <span foreground='#859900' background='#0f1c21aa'>$1</span>";
     }
 }
 

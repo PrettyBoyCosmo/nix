@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "<span foreground='#000000' background='#ffffff'> $(date '+%Y-%m-%d') </span>\
+echo "<span foreground='#000000' background='#88C0D0'> $(date '+%Y-%m-%d') </span>\
 <span foreground='#88C0D0' background='#0f1c21aa'> $(date '+%A') </span>\
-<span foreground='#000000' background='#ffffff'> $(date '+%H:%M:%S') </span>"
+<span foreground='#000000' background='#EBCB8B'> $(date '+%H:%M:%S') </span>"
