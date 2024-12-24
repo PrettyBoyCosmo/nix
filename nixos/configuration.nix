@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./modules/all.nix
-    (inputs.nixvim.nixosModules.nixvim // { helpers = null; })
+    inputs.nixvim.nixosModules.nixvim
   ];
 
   # auto delete builds
