@@ -32,18 +32,6 @@
         pattern = [ "*.h" ];
         command = "0r ~/development/templates/template.h";
       }
-
-      # custom syntax highlights
-      {
-        event = "BufReadPost";
-        pattern = "*";
-        command = "syntax clear cTodo | syntax match CustomTODO /\\<TODO:/ containedin=cCommentL | highlight CustomTODO guifg=#ff9900 gui=bold";
-      }
-      {
-        event = "BufReadPost";
-        pattern = "*";
-        command = "syntax match CustomNOTE /\\<NOTE:/ containedin=cCommentL | highlight CustomNOTE guifg=#ff9900 gui=italic";
-      }
       {
         event = "VimEnter";
         pattern = "*";
