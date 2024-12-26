@@ -17,15 +17,16 @@
   documentation.dev.enable = true;
   documentation.man.enable = true;
 
-  # rtl-sdr stuff
-  environment.etc."udev/rules.d/20-rtl-sdr.rules".text = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="2838", GROUP="plugdev", MODE="0666"
-  '';
-
-
   # bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # rtl sdr (infor from dmesg)
+  boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" "rtl2832" "r820t" ];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="2838", GROUP="plugdev", MODE="0666"
+  '';
 
   # Better scheduling for CPU cycles - thanks System76!!!
   services.system76-scheduler.settings.cfsProfiles.enable = true;

@@ -7,7 +7,9 @@
 
   environment.systemPackages = with pkgs; [
     libreoffice-qt6-fresh
-    gqrx
+    pkg-config
+    rtl-sdr-librtlsdr
+    sdrpp
     rtl-sdr
     spicetify-cli
     nitrogen
