@@ -1,5 +1,6 @@
 // ~/.config/rofi/config.rasi
 // rofi configuration file
+// inspired by Nordic colors
 // created by : cosmo
 
 // configuration
@@ -16,23 +17,23 @@ configuration {
 
 // colors
 * {
-  bg: #24242488;
-  bg-alt: #00000066;
-  bg-selected: #66666666;
-  fg: #ffffff;
-  fg-alt: #669999;
+  bg: #0f1c21;         // Deep background
+  bg-alt: #2E3440;     // Darker alternate background
+  bg-selected: #88C0D0; // Highlight background (cyan shade)
+  fg: #ECEFF4;         // Main foreground (light white-blue)
+  fg-alt: #8FBCBB;     // Alternate foreground (muted teal)
   
   border: 1;
   margin: 0;
   padding: 0;
- spacing: 0;
+  spacing: 0;
 }
 
 // window
 window {
   width: 40%;
   background-color: @bg;
-  border-color: @fg;
+  border-color: @fg-alt;
 }
 
 // element
@@ -42,7 +43,7 @@ element {
   text-color: @fg-alt;
 }
 element selected {
-  text-color: @fg;
+  text-color: @bg;
   background-color: @bg-selected;
 }
 element-text {
@@ -83,3 +84,4 @@ mainbox {
   children: [inputbar, listview];
   background-color: @bg;
 }
+

@@ -7,6 +7,8 @@
 
   environment.systemPackages = with pkgs; [
     libreoffice-qt6-fresh
+    gqrx
+    rtl-sdr
     spicetify-cli
     nitrogen
     xorg.xdpyinfo

@@ -17,6 +17,12 @@
   documentation.dev.enable = true;
   documentation.man.enable = true;
 
+  # rtl-sdr stuff
+  environment.etc."udev/rules.d/20-rtl-sdr.rules".text = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="2838", GROUP="plugdev", MODE="0666"
+  '';
+
+
   # bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
