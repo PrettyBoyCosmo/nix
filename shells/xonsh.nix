@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
+  name = "ccs";
   buildInputs = with pkgs; [
     xonsh
     python312

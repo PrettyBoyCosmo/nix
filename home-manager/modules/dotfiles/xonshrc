@@ -1,15 +1,18 @@
 # ~/.xonshrc
-# xonsh rc file
-# created by cosmo
+# Xonsh configuration file by Cosmo
 
-# imports
+# ----------------------------
+# Imports
+# ----------------------------
 import os
 import os.path
 import socket
 import subprocess
 import netifaces
 
-# constants
+# ----------------------------
+# Constants
+# ----------------------------
 NOTEBOOK = f'$HOME/obsidian'
 OPERATIONS = f'$HOME/operations'
 DEVELOPMENT = f'$HOME/development'
@@ -20,121 +23,72 @@ $SHELL = '/run/current-system/sw/bin/bash'
 $XONSH_PYTHON = '/run/current-system/sw/bin/python3'
 $XONSH_SHOW_TRACEBACK = True
 
-"""
-TOOLS
-"""
-# get working directory
+# ----------------------------
+# Tools
+# ----------------------------
 def pwd():
     return os.getcwd()
 
-# get output from system command
 def command_output(command):
     result = subprocess.check_output(command).decode('utf-8')
     return result.strip()
 
-"""
-SYSTEM
-"""
-
-# choose nix shell
+# ----------------------------
+# System Utilities
+# ----------------------------
 def nix_shell(shell_name):
-    shell_name = shell_name[0] 
+    shell_name = shell_name[0]
     os.system(f'nix-shell /home/bluecosmo/nix/shells/{shell_name}.nix --run xonsh')
 
-# get environment name (custom prompt)
 def env_name_cust(pre_chars='[', post_chars='] ■ '):
     env_path = __xonsh__.env.get('VIRTUAL_ENV', '')
     env_name = os.path.basename(env_path)
     if env_name and env_name != 'xonsh':
         return '{WHITE}'+pre_chars+'{YELLOW}'+env_name+'{WHITE}'+post_chars
 
-# animated-wallpaper
+def nix_shell_name():
+    nix_env_name = os.environ.get('name', '')
+    if nix_env_name.startswith('fhs'):
+        nix_env_name = 'fhs'
+    if os.environ.get('IN_NIX_SHELL') and nix_env_name:
+        return nix_env_name
+    elif os.environ.get('IN_NIX_SHELL'):
+        return 'ccs'
+    return ''
+
+# ----------------------------
+# Wallpaper and Display
+# ----------------------------
 def animated_wallpaper(wp):
     wp = wp[0]
 
-# set wallpaper (wp)
 def set_wallpaper(args):
-    # Ensure args are provided
     if not args:
         print("Usage: set_wallpaper <option> or <wallpaper_name>")
         return None
-
-    # List wallpaper
     option = args[0]
     if option == "ls":
         os.system(f'exa --icons {WALLPAPER_DIR}')
         return None
-
-    # Animated wallpaper
     wallpaper = option
     for root, dirs, files in os.walk(WALLPAPER_DIR):
         for file in files:
             name, ext = os.path.splitext(file)
-            if name == wallpaper or file == wallpaper:  # Match name or full file name
+            if name == wallpaper or file == wallpaper:
                 os.system(f'cp "{os.path.join(WALLPAPER_DIR, file)}" "{os.path.join(WALLPAPER_DIR, "wallpaper")}"')
                 os.system('i3 restart')
-                return None  # Exit once wallpaper is set
+                return None
     print(f"Error: Wallpaper '{wallpaper}' not found in {WALLPAPER_DIR}")
     return None
 
-
-# # set wallpaper (wp)
-# def set_wallpaper(args):
-#
-#     # list wallpaper
-#     option = args[0]
-#     if (option == "ls"):
-#         os.system(f'exa --icons {WALLPAPER_DIR}')
-#         return None
-#
-#     # animated
-#     wallpaper = option
-#     for root, dirs, files in os.walk(WALLPAPER_DIR):
-#         for file in files:
-#             name, ext = os.path.splitext(file)
-#             print(file)
-#             print(name)
-#             print(ext)
-#             if name == wallpaper:
-#                 os.system(f'cp {WALLPAPER_DIR}/{file} {WALLPAPER_DIR}/wallpaper')
-#                 os.system('i3 restart')
-#                 break
-#     return None
-#
-# # set wallpaper (wp)
-# def set_wallpaper(args):
-#
-#     # list wallpaper
-#     option = args[0]
-#     if (option == "ls"):
-#         os.system(f'exa --icons {WALLPAPER_DIR}')
-#         return None
-#
-#     # animated
-#     wallpaper = args[1]
-#     if (option == "animated"):
-#         os.system(f'bash {WALLPAPER_DIR}/animated-wallpaper.sh {WALLPAPER_DIR}/{wallpaper}')
-#         return None
-#
-#     # static
-#     for root, dirs, files in os.walk(WALLPAPER_DIR):
-#         for file in files:
-#             name, ext = os.path.splitext(file)
-#             if name == wallpaper:
-#                 os.system(f'cp {WALLPAPER_DIR}/{file} {WALLPAPER_DIR}/wallpaper')
-#                 os.system(f'feh --bg-{option} {WALLPAPER_DIR}/wallpaper')
-#     return None
-
-# set screen layout [display] (d)
 def set_display(mode):
     os.system(f'autorandr -l {mode[0]}')
     os.system('i3 restart')
     return None
 
-"""
-NETWORKING
-"""
-# get tun0 ipaddr for wargaming
+# ----------------------------
+# Networking
+# ----------------------------
 def get_tun0(pre_chars='[', post_chars='] ■ '):
     try:
         tun0_ip = netifaces.ifaddresses('tun0')[netifaces.AF_INET][0]['addr']
@@ -142,40 +96,35 @@ def get_tun0(pre_chars='[', post_chars='] ■ '):
     except (KeyError, IndexError, ValueError):
         return ''
 
-# get local ip address (ipv4)
 def get_local_ip():
     try:
         temp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        temp_socket.connect(("8.8.8.8", 80))  
-        get_local_ip = temp_socket.getsockname()[0] 
+        temp_socket.connect(("8.8.8.8", 80))
+        get_local_ip = temp_socket.getsockname()[0]
         temp_socket.close()
         return get_local_ip
     except socket.error:
         return "Unable to retrieve local IP address"
 
-# monitor mode (monitor_mode)
 def monitor_mode(adapter):
     adapter = adapter[0]
     os.system('sudo airmon-ng check kill')
     os.system(f'sudo airmon-ng start {adapter}')
 
-# managed mode (managed_mode)
 def managed_mode(adapter):
     adapter = adapter[0]
     os.system(f'sudo airmon-ng stop {adapter}')
     os.system('sudo NetworkManager && sudo wpa_supplicant')
 
-# change mac address (change_mac)
 def change_mac(adapter):
     adapter = adapter[0]
     os.system(f'sudo ifconfig {adapter} down')
     os.system(f'sudo macchanger -r {adapter}')
     os.system(f'sudo ifconfig {adapter} up')
 
-"""
-DEVELOPMENT
-"""
-# git pull, commit, and push (gup)
+# ----------------------------
+# Development Tools
+# ----------------------------
 def git_sync(args):
     branch = args[0]
     commit_message = args[1]
@@ -186,7 +135,6 @@ def git_sync(args):
     os.system(f'git commit -m "{commit_message}"')
     os.system(f'git push -u origin {branch}')
 
-# add git token to repo (addtoken)
 def add_git_token(args):
     git_branch = args[0]
     github_path = args[1]
@@ -196,22 +144,35 @@ def add_git_token(args):
     os.system('git remote remove origin')
     os.system(f'git remote add origin https://{git_token}@github.com/{github_path}')
 
-# modify $PATH environment variable
+# ----------------------------
+# Modify $PATH
+# ----------------------------
 for new_path in [
     '$HOME/.local/bin',
     '$HOME/.nimble/bin',
     f'{OPERATIONS}/tools/',
     f'{OPERATIONS}/tools/apps/',
-    ]:
+]:
     $PATH.insert(0, new_path)
 
-# custom prompt
+# ----------------------------
+# Custom Prompt
+# ----------------------------
 xontrib load vox
 $PROMPT_FIELDS['env_name_cust'] = env_name_cust
 $PROMPT_FIELDS['get_tun0'] = get_tun0
-$PROMPT = "{BLACK} {user}@{hostname} {cwd} \n{WHITE}{curr_branch:[{CYAN}{}{WHITE}] ■ }{env_name_cust}{get_tun0:{}}{#CCFFFF}$ "
+$PROMPT_FIELDS['nix_shell_name'] = nix_shell_name
+$PROMPT = (
+    "{BLACK} {user}@{nix_shell_name} {cwd} \n"
+    "{WHITE}{curr_branch:[{CYAN}{}{WHITE}] ■ }"
+    "{env_name_cust}"
+    "{get_tun0:{}}"
+    "{#CCFFFF}$ "
+)
 
-# aliases
+# ----------------------------
+# Aliases
+# ----------------------------
 aliases.update({
     # apps / tooling / shortcuts
     'rebuild': 'sudo nixos-rebuild switch --flake ~/nix',
@@ -297,5 +258,7 @@ aliases.update({
     'shell': nix_shell,
 })
 
-# zoxide
+# ----------------------------
+# Zoxide Integration
+# ----------------------------
 execx($(zoxide init --cmd cd xonsh), 'exec', __xonsh__.ctx, filename='zoxide')

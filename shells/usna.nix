@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
+  name = "usna";
   buildInputs = with pkgs; [
     xonsh
     python312

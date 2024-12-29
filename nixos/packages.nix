@@ -79,6 +79,7 @@
     # -- debugging --
     gdb
     gef
+    pwndbg
     valgrind
     # -- libraries --
     stripe-cli
@@ -100,9 +101,20 @@
     man-pages
     man-pages-posix
     # -- hacking --
+    ropgadget
     nmap
     ghidra
     wireshark
+    gobuster
+    netcat-openbsd
+    thc-hydra
+    john
+    sqlmap
+    ffuf
+    aircrack-ng
+    metasploit
+    social-engineer-toolkit
+
     # -- sdr --
     pkg-config
     rtl-sdr
