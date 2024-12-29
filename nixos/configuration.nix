@@ -12,6 +12,14 @@
     options = "--delete-older-than 30d";
   };
 
+  programs.xonsh = {
+    enable = true;
+    python = pkgs.python312;
+    packages = with pkgs.python312Packages; [
+      netifaces
+    ];
+  };
+
   # man pages and docs
   documentation.enable = true;
   documentation.dev.enable = true;

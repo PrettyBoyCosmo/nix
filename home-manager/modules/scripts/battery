@@ -31,7 +31,7 @@ if ($status eq 'Discharging') {
     }
 
     # Append discharging information
-    $full_text .= " <span foreground='#000000' background='#859900'> DIS </span>";
+    $full_text .= " <span foreground='#000000' background='$color'> DIS </span>";
 
     # Append time information
     if ($acpi =~ /(\d\d:\d\d):/) {

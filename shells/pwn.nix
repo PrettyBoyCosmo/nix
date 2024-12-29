@@ -11,6 +11,9 @@ pkgs.mkShell {
     glibc
     gcc
 
+    patchelf
+    strace
+
     # binex
     pwntools
     gdb

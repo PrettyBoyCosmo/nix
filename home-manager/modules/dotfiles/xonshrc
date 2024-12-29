@@ -17,6 +17,8 @@ DOWNLOADS = f'$HOME/Downloads'
 WALLPAPER_DIR = os.path.expandvars("$HOME/media/photos/wallpapers")
 DISPLAY_SCRIPTS = f'$HOME/.screenlayout'
 $SHELL = '/run/current-system/sw/bin/bash'
+$XONSH_PYTHON = '/run/current-system/sw/bin/python3'
+$XONSH_SHOW_TRACEBACK = True
 
 """
 TOOLS

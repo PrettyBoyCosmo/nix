@@ -9,14 +9,14 @@
       v = "nvim";
       xs = "nix-shell ~/nix/shells/xonsh.nix --run 'xonsh'";
     };
-        initExtra = ''
-      # Check if we are in an interactive shell and not a subshell
-      if [ -n "$PS1" ] && [ -z "$XONSH_RUNNING" ]; then
-        export XONSH_RUNNING=1
-        # Run nix-shell and make sure to reload the .xonshrc on each new session
-        exec nix-shell ~/nix/shells/xonsh.nix --run "xonsh"
-      fi
-    '';
+    #     initExtra = ''
+    #   # Check if we are in an interactive shell and not a subshell
+    #   if [ -n "$PS1" ] && [ -z "$XONSH_RUNNING" ]; then
+    #     export XONSH_RUNNING=1
+    #     # Run nix-shell and make sure to reload the .xonshrc on each new session
+    #     exec nix-shell ~/nix/shells/xonsh.nix --run "xonsh"
+    #   fi
+    # '';
   };
 }
 
