@@ -21,8 +21,8 @@
       attachments = {
         img_folder = "05 - assets";
       };
+      disable_frontmatter = true;
     };
-
   };
 }
 

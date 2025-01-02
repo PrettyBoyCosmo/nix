@@ -256,6 +256,7 @@ aliases.update({
     'onlyrat': 'python3 $HOME/.MK01-OnlyRAT/main.py',
     'key': 'python3 $HOME/SkeletonKey/main.py',   
     'shell': nix_shell,
+    'wls': 'ln -s $(wordlists_path) $HOME/wordlists',
 })
 
 # ----------------------------

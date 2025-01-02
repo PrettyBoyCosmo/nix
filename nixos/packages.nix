@@ -101,20 +101,20 @@
     man-pages
     man-pages-posix
     # -- hacking --
-    ropgadget
-    nmap
-    ghidra
-    wireshark
-    gobuster
-    netcat-openbsd
-    thc-hydra
-    john
-    sqlmap
-    ffuf
     aircrack-ng
+    ffuf
+    ghidra
+    gobuster
+    john
     metasploit
+    netcat-openbsd
+    nmap
+    ropgadget
+    sqlmap
+    thc-hydra
     social-engineer-toolkit
-
+    wireshark
+    wordlists
     # -- sdr --
     pkg-config
     rtl-sdr
@@ -124,6 +124,7 @@
     # === XORG ===
     # -- applications --
     rofi
+    rofimoji
     stalonetray
     # -- tools --
     acpi # battery status
