@@ -3,7 +3,7 @@
 ```bash
 git clone https://github.com/PrettyBoyCosmo/nix.git
 cd $HOME/nix
-sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --flake .#ccs
 home-manager switch --flake .#ccs
 ```
 
