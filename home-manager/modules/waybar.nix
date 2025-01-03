@@ -19,13 +19,13 @@
         reload_style_on_change = true;
 
         # Modules placement
-        modules-left = ["custom/spacer" "hyprland/workspaces" "custom/spacer"];
-        modules-center = ["mpris"];
-        modules-right = ["group/expand" "group/expand-3" "custom/spacer" "clock" "battery"];
+        modules-left = [ "custom/spacer" "hyprland/workspaces" "custom/spacer" ];
+        modules-center = [ "mpris" ];
+        modules-right = [ "group/expand" "group/expand-3" "custom/spacer" "clock" "battery" ];
 
         # Custom modules and settings
 
-                "group/expand-3" = {
+        "group/expand-3" = {
           orientation = "vertical";
           drawer = {
             "transition-duration" = 600;
@@ -33,7 +33,7 @@
             "transition-to-left" = true;
             "click-to-reveal" = true;
           };
-          modules = ["pulseaudio" "pulseaudio/slider"];
+          modules = [ "pulseaudio" "pulseaudio/slider" ];
         };
 
         "pulseaudio" = {
@@ -49,7 +49,7 @@
             phone = "";
             portable = "";
             car = "";
-            default = ["" "" ""];
+            default = [ "" "" "" ];
           };
         };
 
@@ -65,23 +65,23 @@
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
-          	default = "○";
-	        active= "";
+            default = "○";
+            active = "";
             # ⦿
           };
         };
 
-  #       pulseaudio = {
-  # format = "{volume}% {icon}";
-  # format-bluetooth = "{volume}%  {icon}";
-  # format-muted = " {icon}";
-  # format-icons = {
-  #   default = ["" "" ""];
-  # };
-#   on-click = "pamixer --toggle-mute";
-#   on-scroll-up = "pamixer --increase 5";
-#   on-scroll-down = "pamixer --decrease 5";
-# };
+        #       pulseaudio = {
+        # format = "{volume}% {icon}";
+        # format-bluetooth = "{volume}%  {icon}";
+        # format-muted = " {icon}";
+        # format-icons = {
+        #   default = ["" "" ""];
+        # };
+        #   on-click = "pamixer --toggle-mute";
+        #   on-scroll-up = "pamixer --increase 5";
+        #   on-scroll-down = "pamixer --decrease 5";
+        # };
 
         "battery" = {
           interval = 3; # adjust interval to reduce resource usage
@@ -95,7 +95,17 @@
           format-charging = "<span color='#a6d189'>󱐋</span>";
           format-plugged = "󰂄";
           format-icons = [
-            "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
           ];
           tooltip-format = "{capacity}%"; # Show battery percentage on hover
           on-click-right = "pkill waybar & hyprctl dispatch exec waybar";
@@ -130,7 +140,7 @@
             "children-class" = "not-power";
             "transition-to-left" = true;
           };
-          modules = ["custom/menu" "custom/spacer" "tray"];
+          modules = [ "custom/menu" "custom/spacer" "tray" ];
         };
 
         "custom/menu" = {
@@ -161,121 +171,121 @@
 
     # Style for Waybar
     style = ''
-* {
-    font-family: "JetBrains Mono Nerd Font";
-    font-weight: bold; 
-    font-size: 15px;
-    color: #ffffff;
-}
+      * {
+          font-family: "JetBrains Mono Nerd Font";
+          font-weight: bold; 
+          font-size: 15px;
+          color: #ffffff;
+      }
 
-#custom-notification {
-  font-family: "JetBrains Mono Nerd Font";
-  font-size: 18px;
-  color: #cccedb;
-  margin-left: -2px;
-  margin-top: -4px;
-  padding-bottom: 12px;
-}
+      #custom-notification {
+        font-family: "JetBrains Mono Nerd Font";
+        font-size: 18px;
+        color: #cccedb;
+        margin-left: -2px;
+        margin-top: -4px;
+        padding-bottom: 12px;
+      }
 
-window#waybar {
-    background: rgba(0, 0, 0, 0.8); 
-    border: 3px solid rgba(255, 255, 255, 1); /* Updated to make the border fully white */
-    border-radius: 6px;
-}
+      window#waybar {
+          background: rgba(0, 0, 0, 0.8); 
+          border: 3px solid rgba(255, 255, 255, 1); /* Updated to make the border fully white */
+          border-radius: 6px;
+      }
 
-tooltip {
-    background: #1D2021;
-    color: #FBF1C7;
-    font-size: 13px;
-    border-radius: 7px;
-    border: 2px solid #101a24;
-}
+      tooltip {
+          background: #1D2021;
+          color: #FBF1C7;
+          font-size: 13px;
+          border-radius: 7px;
+          border: 2px solid #101a24;
+      }
 
-#workspaces {
-    font-weight: normal;
-    background: rgba(23, 23, 23, 0.0);
-    color: #B1B2BD;
-    box-shadow: none;
-    text-shadow: none;
-    border-radius: 3px;
-    transition: 0.2s ease;
-    padding-left: 6px;  /* Adjust for centering */
-    padding-right: 6px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
+      #workspaces {
+          font-weight: normal;
+          background: rgba(23, 23, 23, 0.0);
+          color: #B1B2BD;
+          box-shadow: none;
+          text-shadow: none;
+          border-radius: 3px;
+          transition: 0.2s ease;
+          padding-left: 6px;  /* Adjust for centering */
+          padding-right: 6px;
+          padding-top: 4px;
+          padding-bottom: 4px;
+      }
 
-#workspaces button {
-    font-weight: normal;
-    background: rgba(23, 23, 23, 0.0);
-    color: #B1B2BD;
-    box-shadow: none;
-    text-shadow: none;
-    border-radius: 9px;
-    transition: 0.2s ease;
-    padding-left: 2px; /* Increase padding for spacing */
-    padding-right: 2px; /* Increase padding for spacing */
-}
+      #workspaces button {
+          font-weight: normal;
+          background: rgba(23, 23, 23, 0.0);
+          color: #B1B2BD;
+          box-shadow: none;
+          text-shadow: none;
+          border-radius: 9px;
+          transition: 0.2s ease;
+          padding-left: 2px; /* Increase padding for spacing */
+          padding-right: 2px; /* Increase padding for spacing */
+      }
 
-#workspaces button.active {
-    color: #cccedb;
-    font-weight: normal;
-    transition: all 0.3s ease;
-    padding-left: 2px;
-    padding-right: 2px;
-}
+      #workspaces button.active {
+          color: #cccedb;
+          font-weight: normal;
+          transition: all 0.3s ease;
+          padding-left: 2px;
+          padding-right: 2px;
+      }
 
-#workspaces button:hover {
-    background: none;
-    color: #7DAEA3;
-    font-weight: normal;
-    animation: ws_hover 20s ease-in-out 1;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
-}
+      #workspaces button:hover {
+          background: none;
+          color: #7DAEA3;
+          font-weight: normal;
+          animation: ws_hover 20s ease-in-out 1;
+          transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+      }
 
-#battery {
-    font-weight: normal;
-    font-size: 22px;
-    color: #a6d189;
-    background: rgba(23, 23, 23, 0.0);
-    opacity: 1;
-    margin: 5px 0px; /* Added margin to create space around the battery */
-    padding-left: 10px;
-    padding-right: 10px;
-}
+      #battery {
+          font-weight: normal;
+          font-size: 22px;
+          color: #a6d189;
+          background: rgba(23, 23, 23, 0.0);
+          opacity: 1;
+          margin: 5px 0px; /* Added margin to create space around the battery */
+          padding-left: 10px;
+          padding-right: 10px;
+      }
 
-#pulseaudio {
-    font-weight: normal;
-    font-size: 24px; /* Increased the font size for the volume icon */
-    color: #cccedb;
-    background: rgba(22, 19, 32, 0.0);
-    opacity: 1;
-    margin-left: 0px;
-}
+      #pulseaudio {
+          font-weight: normal;
+          font-size: 24px; /* Increased the font size for the volume icon */
+          color: #cccedb;
+          background: rgba(22, 19, 32, 0.0);
+          opacity: 1;
+          margin-left: 0px;
+      }
 
-#backlight-slider slider,
-#pulseaudio-slider slider {
-    background: #A1BDCE;
-    background-color: transparent;
-    box-shadow: none;
-}
+      #backlight-slider slider,
+      #pulseaudio-slider slider {
+          background: #A1BDCE;
+          background-color: transparent;
+          box-shadow: none;
+      }
 
-#backlight-slider trough,
-#pulseaudio-slider trough {
-    min-width: 9px;
-    min-height: 90px;
-    margin-bottom: 6px;
-    border-radius: 8px;
-    background: #343434;
-    margin-left: -4px;
-    margin-right: -4px;
-}
+      #backlight-slider trough,
+      #pulseaudio-slider trough {
+          min-width: 9px;
+          min-height: 90px;
+          margin-bottom: 6px;
+          border-radius: 8px;
+          background: #343434;
+          margin-left: -4px;
+          margin-right: -4px;
+      }
 
-#backlight-slider highlight,
-#pulseaudio-slider highlight {
-    border-radius: 8px;
-    background-color: #2096C0;
-}
+      #backlight-slider highlight,
+      #pulseaudio-slider highlight {
+          border-radius: 8px;
+          background-color: #2096C0;
+      }
 
     '';
   };

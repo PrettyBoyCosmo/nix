@@ -3,18 +3,18 @@
     enable = true;
 
     modules = {
-      align = {};
+      align = { };
       basics = {
         options.extra_ui = true;
       };
-      clue = {};
-      cursorword = {};
-      doc = {};
-      extra = {};
-      indentscope = {};
-      trailspace = {};
-      misc = {};
-      surround = {};
+      clue = { };
+      cursorword = { };
+      doc = { };
+      extra = { };
+      indentscope = { };
+      trailspace = { };
+      misc = { };
+      surround = { };
     };
   };
 }

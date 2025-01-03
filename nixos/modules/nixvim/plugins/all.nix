@@ -2,7 +2,7 @@
   imports = [
     ./airline.nix
     ./alpha.nix
-        ./todo-comments.nix
+    ./todo-comments.nix
     ./harpoon.nix
     ./notify.nix
     ./telescope.nix
@@ -16,6 +16,6 @@
     ./treesitter.nix
     ./neotree.nix
     ./mini.nix
-        ./nixplugin.nix
+    ./nixplugin.nix
   ];
 }

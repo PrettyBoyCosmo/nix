@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ...}: {
+{ inputs, config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
@@ -121,6 +121,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "24.05"; # DON'T CHANGE
 }

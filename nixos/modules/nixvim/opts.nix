@@ -69,7 +69,7 @@
 
       # guifont = "Cascadia Code";
 
-      completeopt = ["menu" "menuone" "noselect"]; # For CMP plugin
+      completeopt = [ "menu" "menuone" "noselect" ]; # For CMP plugin
     };
   };
 }

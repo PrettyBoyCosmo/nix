@@ -8,7 +8,7 @@
       isNormalUser = true;
       description = "bluecosmo";
       extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
-      packages = with pkgs; [];
+      packages = with pkgs; [ ];
     };
   };
 
