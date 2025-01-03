@@ -30,7 +30,7 @@
             config.allowUnfree = true;
           };
 
-          inherit inputs system;
+          inherit inputs;
         };
 
         modules = [
