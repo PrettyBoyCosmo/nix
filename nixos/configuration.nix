@@ -52,25 +52,29 @@
   services.thermald.enable = true;
 
   # services 
-  services.xserver = {
-    enable = true;
-    layout = "us";
+  services = {
+    displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "bluecosmo";
+      defaultSession = "none+i3";
+    };
 
-    displayManager.lightdm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "bluecosmo";
-    desktopManager.cinnamon.enable = true; # disable for auto i3
-    windowManager.i3.enable = true;
-    displayManager.defaultSession = "none+i3";
+    xserver = {
+      enable = true;
 
-    # displayManager = {
-    #   lightdm.enable = true;
-    #   lightdm.greeter = {
-    #     enable = true;
-    #     allow-session-switching = false;
-    #   };
-    #   defaultSession = "none+i3";
-    # };
+      displayManager.lightdm.enable = true;
+      desktopManager.cinnamon.enable = true; # disable for auto i3
+      windowManager.i3.enable = true;
+
+      # displayManager = {
+      #   lightdm.enable = true;
+      #   lightdm.greeter = {
+      #     enable = true;
+      #     allow-session-switching = false;
+      #   };
+      #   defaultSession = "none+i3";
+      # };
+    };
   };
 
 
