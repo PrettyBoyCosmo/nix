@@ -3,9 +3,12 @@
 
     treesitter = {
       enable = true;
-      nixvimInjections = true;
-      folding = true;
-      indent = true;
+
+      settings = {
+        nixvimInjections = true;
+        folding = true;
+        indent.enable = true;
+      };
     };
 
     treesitter-refactor = {

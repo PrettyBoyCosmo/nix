@@ -1,5 +1,3 @@
 {
-  programs.nixvim.plugins.todo-comments = {
-    enable = true;
-  };
+  programs.nixvim.plugins.todo-comments.enable = true;
 }

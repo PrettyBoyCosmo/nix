@@ -5,8 +5,8 @@
     enable = true;
 
     settings = {
-      powerline_fonts = true;
-      skip_empty_sections = true;
+      powerline_fonts = 1;
+      skip_empty_sections = 1;
       # theme = "minimalist";
       # theme = "base16_atelier_lakeside";
       # theme = "base16";

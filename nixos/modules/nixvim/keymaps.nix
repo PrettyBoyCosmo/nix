@@ -1,4 +1,6 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+
+{
   programs.nixvim = {
     globals = {
       mapleader = " ";
@@ -93,9 +95,14 @@
               "<Esc>" = "<Esc>:normal! zz<CR>";
             };
 
+        keymaps = lib.concatLists [
+          normal
+          visual
+          insert
+        ];
       in
       config.nixvim.helpers.keymaps.mkKeymaps
         { options.silent = true; }
-        (normal ++ visual ++ insert);
+        keymaps;
   };
 }
