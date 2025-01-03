@@ -2,51 +2,50 @@
   description = "My system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     catppuccin.url = "github:catppuccin/nix";
+
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, catppuccin, ... }@inputs:
-
+  outputs = inputs:
     let
       system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
-
-      nixosConfigurations.ccs = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.ccs = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
           inherit inputs;
         };
 
         modules = [
           ./nixos/configuration.nix
           inputs.nixvim.nixosModules.nixvim
-          catppuccin.nixosModules.catppuccin
+          inputs.catppuccin.nixosModules.catppuccin
         ];
       };
 
-      homeConfigurations.bluecosmo = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          ./home-manager/home.nix
-          catppuccin.homeManagerModules.catppuccin
-        ];
-
-      };
+      homeConfigurations.bluecosmo =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home-manager/home.nix
+            inputs.catppuccin.homeManagerModules.catppuccin
+          ];
+        };
     };
 }
