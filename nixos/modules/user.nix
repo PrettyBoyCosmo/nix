@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   programs.zsh.enable = true;
 
   users = {
