@@ -4,6 +4,8 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,33 +21,37 @@
   };
 
   outputs = inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
+  inputs.flake-parts.lib.mkFlake
+    { inherit inputs; }
     {
-      nixosConfigurations.ccs = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
+      systems = [ "x86_64-liunx" ];
 
-        modules = [
-          ./nixos/configuration.nix
-          inputs.nixvim.nixosModules.nixvim
-          inputs.catppuccin.nixosModules.catppuccin
-        ];
-      };
+      flake = {
+        nixosConfigurations.ccs = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
 
-      homeConfigurations.bluecosmo =
-        inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
           modules = [
-            ./home-manager/home.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
+            ./nixos/configuration.nix
+            inputs.nixvim.nixosModules.nixvim
+            inputs.catppuccin.nixosModules.catppuccin
           ];
         };
+
+        homeConfigurations.bluecosmo =
+          inputs.home-manager.lib.homeManagerConfiguration {
+            # FIXME: transpose homeConfigurations to access pkgs
+            pkgs = import inputs.nixpkgs {
+              system = "x86_64-liunx";
+              config.allowUnfree = true;
+            };
+
+            modules = [
+              ./home-manager/home.nix
+              inputs.catppuccin.homeManagerModules.catppuccin
+            ];
+          };
+      };
     };
 }
