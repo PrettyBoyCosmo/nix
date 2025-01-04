@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   tpm = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
