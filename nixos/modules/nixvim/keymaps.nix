@@ -1,5 +1,10 @@
 { config, lib, ... }:
-
+let
+  inherit (lib)
+    concatLists
+    mapAttrsToList
+    ;
+in
 {
   programs.nixvim = {
     globals = {
@@ -10,7 +15,7 @@
     keymaps =
       let
         normal =
-          lib.mapAttrsToList
+          mapAttrsToList
             (key: action: {
               mode = "n";
               inherit action key;
@@ -68,7 +73,7 @@
             };
 
         visual =
-          lib.mapAttrsToList
+          mapAttrsToList
             (key: action: {
               mode = "v";
               inherit action key;
@@ -85,7 +90,7 @@
             };
 
         insert =
-          lib.mapAttrsToList
+          mapAttrsToList
             (key: action: {
               mode = "i";
               inherit action key;
@@ -95,7 +100,7 @@
               "<Esc>" = "<Esc>:normal! zz<CR>";
             };
 
-        keymaps = lib.concatLists [
+        keymaps = concatLists [
           normal
           visual
           insert
