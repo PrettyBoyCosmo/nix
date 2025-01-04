@@ -6,6 +6,11 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +30,10 @@
     { inherit inputs; }
     {
       systems = [ "x86_64-liunx" ];
+
+      imports = [
+        ./core.nix
+      ];
 
       flake = {
         nixosConfigurations.ccs = inputs.nixpkgs.lib.nixosSystem {
