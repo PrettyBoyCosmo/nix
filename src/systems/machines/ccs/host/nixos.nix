@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, flakeRoot, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./packages.nix
-    ./modules/all.nix
+    (flakeRoot + "/nixos/packages.nix")
+    (flakeRoot + "/nixos/modules/all.nix")
   ];
 
   # auto delete builds
@@ -128,5 +127,4 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "24.05"; # DON'T CHANGE
 }

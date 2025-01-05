@@ -7,20 +7,14 @@
     xkbVariant = "";
 
     inputClassSections = [
-      {
-        identifier = "UNIW Touchpad";
-        matchIsTouchpad = "on";
-        driver = "libinput";
-        option = [
-          "NaturalScrolling"
-          "false" # Disable natural scrolling
-          "ScrollMethod"
-          "twofinger" # Ensure two-finger scrolling
-        ];
-      }
+      ''
+        Identifier "UNIW Touchpad"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "NaturalScrolling" "false"
+        Option "ScrollMethod" "twofinger"
+      ''
     ];
-
-    videoDrivers = [ "intel" ];
   };
 }
 # {

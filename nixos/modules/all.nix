@@ -7,7 +7,6 @@
     ./nm.nix
     ./sound.nix
     ./trim.nix
-    ./user.nix
     ./virtmanager.nix
     ./xserver.nix
   ];

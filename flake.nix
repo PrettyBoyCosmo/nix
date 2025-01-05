@@ -26,44 +26,16 @@
   };
 
   outputs = inputs:
-  inputs.flake-parts.lib.mkFlake
-    {
-      inherit inputs;
-      specialArgs.flakeRoot = ./.;
-    }
-    {
-      systems = [ "x86_64-liunx" ];
+    inputs.flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+        specialArgs.flakeRoot = ./.;
+      }
+      {
+        systems = [ "x86_64-liunx" ];
 
-      imports = [
-        ./core.nix
-      ];
-
-      flake = {
-        nixosConfigurations.ccs = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./nixos/configuration.nix
-            inputs.nixvim.nixosModules.nixvim
-            inputs.catppuccin.nixosModules.catppuccin
-          ];
-        };
-
-        homeConfigurations.bluecosmo =
-          inputs.home-manager.lib.homeManagerConfiguration {
-            # FIXME: transpose homeConfigurations to access pkgs
-            pkgs = import inputs.nixpkgs {
-              system = "x86_64-liunx";
-              config.allowUnfree = true;
-            };
-
-            modules = [
-              ./home-manager/home.nix
-              inputs.catppuccin.homeManagerModules.catppuccin
-            ];
-          };
+        imports = [
+          ./core.nix
+        ];
       };
-    };
 }
