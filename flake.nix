@@ -27,7 +27,10 @@
 
   outputs = inputs:
   inputs.flake-parts.lib.mkFlake
-    { inherit inputs; }
+    {
+      inherit inputs;
+      specialArgs.flakeRoot = ./.;
+    }
     {
       systems = [ "x86_64-liunx" ];
 
