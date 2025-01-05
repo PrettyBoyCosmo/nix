@@ -126,4 +126,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  custom = {
+    nixvim.enable = true;
+  };
 }
