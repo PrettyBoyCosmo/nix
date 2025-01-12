@@ -16,10 +16,10 @@
       ];
       templates = {
         date_format = "%Y-%m-%d";
-        subdir = "04 - templates";
+        subdir = "04-templates";
       };
       attachments = {
-        img_folder = "05 - assets";
+        img_folder = "01-assets";
       };
       disable_frontmatter = true;
     };

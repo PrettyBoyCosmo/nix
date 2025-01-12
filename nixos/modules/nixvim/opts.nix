@@ -51,7 +51,7 @@
 
       termguicolors = true; # Disables 24-bit RGB color in the |TUI|
 
-      spell = false; # Highlight spelling mistakes (local to window)
+      spell = true; # Highlight spelling mistakes (local to window)
       wrap = true; # Prevent text from wrapping
 
       tabstop = 4; # Number of spaces a <Tab> in the text stands for (local to buffer)

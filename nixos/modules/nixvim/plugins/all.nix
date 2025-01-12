@@ -2,20 +2,21 @@
   imports = [
     ./airline.nix
     ./alpha.nix
-        ./todo-comments.nix
+    ./comment.nix
+    ./cmp.nix
+    ./floaterm.nix
     ./harpoon.nix
+    ./image.nix
+    ./lsp.nix
+    ./mini.nix
+    ./neotree.nix
+    ./nixplugin.nix
     ./notify.nix
     ./telescope.nix
     ./tmux-navigator.nix
-    ./comment.nix
-    ./floaterm.nix
-    ./obsidian.nix
-    ./cmp.nix
+    ./todo-comments.nix
     ./transparent.nix
-    ./lsp.nix
     ./treesitter.nix
-    ./neotree.nix
-    ./mini.nix
-        ./nixplugin.nix
+    ./obsidian.nix
   ];
 }
