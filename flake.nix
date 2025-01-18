@@ -1,51 +1,41 @@
 {
-	description = "My system configuration";
+  description = "My system configuration";
 
-	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-        catppuccin.url = "github:catppuccin/nix";
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+  inputs = {
+    catppuccin.url = "github:catppuccin/nix";
 
-		nixvim = {
-			url = "github:nix-community/nixvim";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-	};
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
-	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, catppuccin, ... }@inputs: 
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-		let
-			system = "x86_64-linux";
-		in {
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-		nixosConfigurations.ccs = nixpkgs.lib.nixosSystem {
-			specialArgs = {
-				pkgs-stable = import nixpkgs-stable {
-					inherit system;
-					config.allowUnfree = true;
-				};
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-				inherit inputs system;
-			};
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-			modules = [
-				./nixos/configuration.nix
-				inputs.nixvim.nixosModules.nixvim
-                catppuccin.nixosModules.catppuccin
-			];
-		};
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+        specialArgs.flakeRoot = ./.;
+      }
+      {
+        systems = [ "x86_64-liunx" ];
 
-		homeConfigurations.bluecosmo = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.${system};
-            modules = [
-              ./home-manager/home.nix
-              catppuccin.homeManagerModules.catppuccin
-            ];
-
-		};
-	};
+        imports = [
+          ./core.nix
+        ];
+      };
 }

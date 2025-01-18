@@ -1,13 +1,9 @@
-{ config, pkgs, ... }:
+{ flakeRoot, pkgs, ... }:
 
 {
   imports = [
-    ./modules/all.nix
+    (flakeRoot + "/home-manager/modules/all.nix")
   ];
-
-  home.username = "bluecosmo";
-  home.homeDirectory = "/home/bluecosmo";
-  home.stateVersion = "24.05"; # Update as needed
 
   programs.man.generateCaches = true;
 

@@ -1,8 +1,9 @@
-{ inputs, config, pkgs, ...}: {
+{ pkgs, flakeRoot, ... }:
+
+{
   imports = [
-    ./hardware-configuration.nix
-    ./packages.nix
-    ./modules/all.nix
+    (flakeRoot + "/nixos/packages.nix")
+    (flakeRoot + "/nixos/modules/all.nix")
   ];
 
   # auto delete builds
@@ -52,25 +53,29 @@
   services.thermald.enable = true;
 
   # services 
-  services.xserver = {
-    enable = true;
-    layout = "us";
+  services = {
+    displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "bluecosmo";
+      defaultSession = "none+i3";
+    };
 
-    displayManager.lightdm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "bluecosmo";
-    desktopManager.cinnamon.enable = true; # disable for auto i3
-    windowManager.i3.enable = true;
-    displayManager.defaultSession = "none+i3";
+    xserver = {
+      enable = true;
 
-    # displayManager = {
-    #   lightdm.enable = true;
-    #   lightdm.greeter = {
-    #     enable = true;
-    #     allow-session-switching = false;
-    #   };
-    #   defaultSession = "none+i3";
-    # };
+      displayManager.lightdm.enable = true;
+      desktopManager.cinnamon.enable = true; # disable for auto i3
+      windowManager.i3.enable = true;
+
+      # displayManager = {
+      #   lightdm.enable = true;
+      #   lightdm.greeter = {
+      #     enable = true;
+      #     allow-session-switching = false;
+      #   };
+      #   defaultSession = "none+i3";
+      # };
+    };
   };
 
 
@@ -121,6 +126,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
-  system.stateVersion = "24.05"; # DON'T CHANGE
+  custom = {
+    nixvim.enable = true;
+  };
 }

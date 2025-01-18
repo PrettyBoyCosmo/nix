@@ -36,7 +36,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "n";
-              keymap = [ "n" "n" ":ene <BAR> startinsert <CR>" {} ];
+              keymap = [ "n" "n" ":ene <BAR> startinsert <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -51,7 +51,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "o";
-              keymap = [ "n" "o" ":Telescope find_files <CR>" {} ];
+              keymap = [ "n" "o" ":Telescope find_files <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -66,7 +66,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "v";
-              keymap = [ "n" "v" ":lua require('telescope.builtin').find_files({ cwd = '~/obsidian' }) <CR>" {} ];
+              keymap = [ "n" "v" ":lua require('telescope.builtin').find_files({ cwd = '~/obsidian' }) <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -81,7 +81,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "r";
-              keymap = [ "n" "r" ":Telescope oldfiles <CR>" {} ];
+              keymap = [ "n" "r" ":Telescope oldfiles <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -96,7 +96,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "f";
-              keymap = [ "n" "f" ":Telescope live_grep <CR>" {} ];
+              keymap = [ "n" "f" ":Telescope live_grep <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -111,7 +111,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "e";
-              keymap = [ "n" "e" ":e ~/nix/nixos/modules/nixvim/nixvim.nix <CR>" {} ];
+              keymap = [ "n" "e" ":e ~/nix/nixos/modules/nixvim/nixvim.nix <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -126,7 +126,7 @@
             opts = {
               hl = "AlphaButton";
               shortcut = "q";
-              keymap = [ "n" "q" ":qa <CR>" {} ];
+              keymap = [ "n" "q" ":qa <CR>" { } ];
               position = "center";
               cursor = 0;
               width = 40;
@@ -152,4 +152,3 @@
     ];
   };
 }
-
