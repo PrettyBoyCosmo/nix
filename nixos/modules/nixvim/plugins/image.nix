@@ -4,7 +4,7 @@
 
     backend = "kitty";
 
-    editorOnlyRenderWhenfocused = false;
+    editorOnlyRenderWhenFocused = false;
 
   };
 }
