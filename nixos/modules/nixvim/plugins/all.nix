@@ -2,6 +2,7 @@
   imports = [
     ./airline.nix
     ./alpha.nix
+    ./bullets.nix
     ./comment.nix
     ./cmp.nix
     ./floaterm.nix

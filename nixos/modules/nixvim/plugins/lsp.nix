@@ -26,6 +26,7 @@
         clangd.enable = true;
         pylsp.enable = true;
         html.enable = true;
+        java-language-server.enable = true;
       };
     };
   };

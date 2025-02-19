@@ -13,6 +13,10 @@
           name = "vault";
           path = "~/obsidian";
         }
+        {
+          name = "wargames";
+          path = "~/operations/wargames";
+        }
       ];
       templates = {
         date_format = "%Y-%m-%d";
