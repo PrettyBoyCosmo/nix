@@ -54,9 +54,9 @@
       spell = true; # Highlight spelling mistakes (local to window)
       wrap = true; # Prevent text from wrapping
 
-      tabstop = 4; # Number of spaces a <Tab> in the text stands for (local to buffer)
-      shiftwidth = 4; # Number of spaces used for each step of (auto)indent (local to buffer)
-      softtabstop = 4;
+      tabstop = 2; # Number of spaces a <Tab> in the text stands for (local to buffer)
+      shiftwidth = 2; # Number of spaces used for each step of (auto)indent (local to buffer)
+      softtabstop = 2;
       expandtab = true; # Expand <Tab> to spaces in Insert mode (local to buffer)
       autoindent = true; # Do clever autoindenting
       smartindent = true;

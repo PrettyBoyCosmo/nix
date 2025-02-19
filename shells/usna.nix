@@ -8,9 +8,14 @@ pkgs.mkShell {
     python312Packages.virtualenv
     python312Packages.netifaces
 
+    # 210 242
     ncurses
     armadillo
     gnuplot_qt
+
+    # 220 221 211
+    zulu23
+
 
   ];
 

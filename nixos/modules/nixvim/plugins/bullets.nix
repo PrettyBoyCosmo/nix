@@ -1,5 +1,9 @@
+{ pkgs, ... }:
+
 {
-  programs.nixvim.plugins.bullets = {
-    enable = true;
+  programs.nixvim = {
+    extraPlugins = with pkgs.vimPlugins; [
+      bullets-vim
+    ];
   };
 }

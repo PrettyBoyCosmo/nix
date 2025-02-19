@@ -41,6 +41,7 @@ in
       setw -g mode-keys vi
       set-option -g prefix C-Space
       set-option -g status-position top
+      set-option -g allow-passthrough on
       set-option -g default-shell /home/bluecosmo/.nix-profile/bin/bash
       set -g pane-active-border-style fg=#FFFFFF
 

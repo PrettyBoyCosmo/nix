@@ -52,6 +52,7 @@
     feh
     ffmpeg
     flameshot
+    ueberzugpp
     # -- system --
     busybox
     fastfetch
@@ -64,16 +65,19 @@
     cups
     curl
     openvpn
+    sshfs
     tor
     wget
-    # -- vritualization --
+    # -- virtualization --
     libvirt
     qemu
     spice-vdagent
     virt-manager
+    virt-viewer
 
     # === DEVELOPMENT ===
     # -- editors --
+    vscodium-fhs
     neovim
     vim
     # -- debugging --
@@ -87,6 +91,8 @@
     # -- c --
     gcc
     clang
+    # -- java --
+    zulu23
     # -- tools --
     git
     # -- python --

@@ -33,6 +33,11 @@
         command = "0r ~/development/templates/template.h";
       }
       {
+        event = [ "BufNewFile" ];
+        pattern = [ "*.java" ];
+        command = "0r ~/development/templates/Template.java";
+      }
+      {
         event = "VimEnter";
         pattern = "*";
         command = ''

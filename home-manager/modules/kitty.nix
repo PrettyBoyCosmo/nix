@@ -13,6 +13,8 @@
       editor nvim
       enable_audio_bell no
 
+      enable-remote-control yes
+
       map ctrl+shift+l send_text all clear\n
 
       foreground #CDD6F4

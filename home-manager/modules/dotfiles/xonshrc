@@ -215,6 +215,7 @@ aliases.update({
     # connect / disconnect
     'pccon': 'ssh bluecosmo@planetcosmo',
     'gitcon': 'ssh git@planetcosmo',
+    '220con': 'ssh pi@192.168.37.2',
     'mcon': 'ssh moon -p 69',
     'kcon': 'ssh kali',
     'dscon': 'ssh deathstar',
@@ -257,6 +258,7 @@ aliases.update({
     'key': 'python3 $HOME/SkeletonKey/main.py',   
     'shell': nix_shell,
     'wls': 'ln -s $(wordlists_path) $HOME/wordlists',
+    'cflag': 'echo "CCS{FLAG}" > flag.txt',
 })
 
 # ----------------------------

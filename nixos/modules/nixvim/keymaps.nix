@@ -79,6 +79,10 @@
           "K" = ":m '<-2<CR>gv=gv";
           "J" = ":m '>+1<CR>gv=gv";
           "<Esc>" = ":normal! zz<CR>";
+
+          # List toggles (bulleted & numbered)
+          "<leader>*" = ":<C-u>'<,'>s/^/- /<CR>";
+          "<leader>&" = ":<C-u>'<,'>s/^/\\=printf('%d. ', line('.') - line(\"'<\") + 1)/<CR>";
         };
 
       insert =

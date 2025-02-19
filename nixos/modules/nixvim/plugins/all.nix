@@ -13,6 +13,7 @@
     ./neotree.nix
     ./nixplugin.nix
     ./notify.nix
+    ./table-mode.nix
     ./telescope.nix
     ./tmux-navigator.nix
     ./todo-comments.nix
