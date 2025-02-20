@@ -26,6 +26,7 @@
           "<Leader>l" = ":Mason<CR>";
           "<Leader>r" = ":edit<CR>";
           "<leader>b" = "<C-^>";
+          "<leader>sl" =  ":put =repeat('\\|---', v:count1) . '\\|'<CR>";
 
            # Harpoon keymaps
           "<leader>a" = ":lua require('harpoon.mark').add_file()<CR>";
