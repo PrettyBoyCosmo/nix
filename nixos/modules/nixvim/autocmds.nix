@@ -1,6 +1,12 @@
 {
   programs.nixvim = {
     autoCmd = [
+      # auto remove trailing spaces
+      {
+        event = [ "BufWritePre" ];
+        pattern = [ "*" ];
+        command = ":%s/\\s\\+$//e";
+      }
       # program templates
       {
         event = [ "BufNewFile" ];

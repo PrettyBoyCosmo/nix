@@ -61,21 +61,6 @@
           }
           {
             type = "button";
-            # val = "🪨 • Obsidian Vault";
-            val = " • Obsidian Vault";
-            opts = {
-              hl = "AlphaButton";
-              shortcut = "v";
-              keymap = [ "n" "v" ":lua require('telescope.builtin').find_files({ cwd = '~/obsidian' }) <CR>" {} ];
-              position = "center";
-              cursor = 0;
-              width = 40;
-              align_shortcut = "right";
-              hl_shortcut = "AlphaButtonShortcut";
-            };
-          }
-          {
-            type = "button";
             # val = "👀 • Recently Used";
             val = " • Recently Used";
             opts = {

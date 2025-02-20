@@ -28,16 +28,11 @@
         hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
       })
 
-      -- Autocmd to prepend ./01-assets/ to all ![[...]] links
-      vim.api.nvim_create_autocmd("BufReadPost", {
+      -- Autocmd to clear image when cursor moves off the line
+      vim.api.nvim_create_autocmd("CursorMoved", {
         pattern = "*.md",
         callback = function()
-          local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-          for i, line in ipairs(lines) do
-            -- Replace any ![[image.png]] with ![[./01-assets/image.png]]
-            lines[i] = line:gsub("!%[%[(.-)%]%]", "![[./01-assets/%1]]")
-          end
-          vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+          require("image").clear()
         end,
       })
     '';
