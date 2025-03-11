@@ -193,6 +193,7 @@ aliases.update({
     'neo':'fastfetch -c neofetch.jsonc',
     'acf': 'auto-cpufreq --stats',
     'r': 'ranger .',
+    'z': 'zathura @($arg0) &',
     'tkill': 'tmux kill-server',
     'cat': 'bat',
     'xp': 'tmux set-environment', # "export"
@@ -201,7 +202,7 @@ aliases.update({
     'wp_animated': animated_wallpaper,
     'xc': 'xclip -selection c',
     'c': 'clear',
-    'code': 'codium', 
+    'code': 'codium',
     'etit': 'v $HOME/.dotfiles/.config/obs/title.txt',
     # update / upload / download
     'up': 'sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt autoremove',
@@ -255,7 +256,7 @@ aliases.update({
     'change_mac': change_mac,
     'duckencode': f'python2 {DEVELOPMENT}/rubberducky/encoder/duckencoder.py -i payload.txt',
     'onlyrat': 'python3 $HOME/.MK01-OnlyRAT/main.py',
-    'key': 'python3 $HOME/SkeletonKey/main.py',   
+    'key': 'python3 $HOME/SkeletonKey/main.py',
     'shell': nix_shell,
     'wls': 'ln -s $(wordlists_path) $HOME/wordlists',
     'cflag': 'echo "CCS{FLAG}" > flag.txt',

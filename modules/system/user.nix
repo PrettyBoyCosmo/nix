@@ -11,7 +11,5 @@
       packages = with pkgs; [];
     };
   };
-
-  # Enable automatic login for the user.
-  # services.getty.autologinUser = "bluecosmo";
 }
+

@@ -13,12 +13,13 @@
     ./neotree.nix
     ./nixplugin.nix
     ./notify.nix
+    ./obsidian.nix
     ./table-mode.nix
     ./telescope.nix
     ./tmux-navigator.nix
     ./todo-comments.nix
     ./transparent.nix
     ./treesitter.nix
-    ./obsidian.nix
   ];
 }
+

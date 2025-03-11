@@ -15,7 +15,7 @@ pkgs.mkShell {
 
     # 220 221 211
     zulu23
-
+    graphviz
 
   ];
 

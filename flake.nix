@@ -1,51 +1,69 @@
 {
-	description = "My system configuration";
+  description = "Cosmo's NixOS Configuration";
 
-	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-        catppuccin.url = "github:catppuccin/nix";
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-		nixvim = {
-			url = "github:nix-community/nixvim";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-	};
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-	outputs = { self, nixpkgs, nixpkgs-stable, home-manager, catppuccin, ... }@inputs: 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-		let
-			system = "x86_64-linux";
-		in {
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixvim, ... }@inputs:
+  let
+    system = "x86_64-linux";
+  in {
+    nixosConfigurations = {
+      # ✅ Bluecosmo - PC
+      "bluecosmo" = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs system; };
+        modules = [
+          ./hosts/bluecosmo.nix
+          ./modules/meta/all.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.bluecosmo = import ./home-manager/users/bluecosmo.nix;
+          }
+        ];
+      };
 
-		nixosConfigurations.ccs = nixpkgs.lib.nixosSystem {
-			specialArgs = {
-				pkgs-stable = import nixpkgs-stable {
-					inherit system;
-					config.allowUnfree = true;
-				};
+      # ✅ Planetcosmo - Server
+      "planetcosmo" = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs system home-manager; };
+        modules = [
+          ./hosts/planetcosmo.nix
+          ./modules/hardware.nix  # ✅ Hardware detection (filesystem, etc.)
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.planetcosmo = import ./home-manager/users/planetcosmo.nix;
+          }
+        ];
+      };
+    };
 
-				inherit inputs system;
-			};
+    # ✅ FIXED: New Home Manager Configuration (No Deprecated Args)
+    homeConfigurations = {
+      "bluecosmo" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home-manager/users/bluecosmo.nix ];
+      };
 
-			modules = [
-				./nixos/configuration.nix
-				inputs.nixvim.nixosModules.nixvim
-                catppuccin.nixosModules.catppuccin
-			];
-		};
-
-		homeConfigurations.bluecosmo = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.${system};
-            modules = [
-              ./home-manager/home.nix
-              catppuccin.homeManagerModules.catppuccin
-            ];
-
-		};
-	};
+      "planetcosmo" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home-manager/users/planetcosmo.nix ];
+      };
+    };
+  };
 }
+
