@@ -62,6 +62,7 @@
 
     homeConfigurations."bluecosmo" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = { inherit inputs system; };
       modules = [
         ./home-manager/home.nix
         ./home-manager/users/bluecosmo.nix
