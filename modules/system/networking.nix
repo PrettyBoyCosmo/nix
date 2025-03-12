@@ -1,4 +1,0 @@
-{
-  networking.networkmanager.enable = true;
-}
-

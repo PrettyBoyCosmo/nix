@@ -1,27 +1,26 @@
 { config, lib, pkgs, ... }:
+
 let
+  # Fetch TPM v3.1.0 with the correct hash
   tpm = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
     repo = "tpm";
-    rev = "3.0.0";  # Replace with your desired version or commit hash
-    sha256 = "hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";  # Correct hash
+    rev = "v3.1.0";  # Latest stable release
+    sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";  # Updated hash
   };
 in
 {
-  home.file = {
-    ".tmux/plugins/tpm".source = tpm;
-  };
-
-  home.file = {
-    ".tmux.conf".text = ''
-      # tmux configuration
-      # created by : bluecosmo
-
-      # refresh binding
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    shortcut = "Space"; # tmux prefix key
+    terminal = "screen-256color";
+    extraConfig = ''
+      # Refresh binding
       unbind r
       bind r source-file ~/.tmux.conf
 
-      # navigation
+      # Navigation
       bind-key h select-pane -L
       bind-key j select-pane -D
       bind-key k select-pane -U
@@ -31,32 +30,31 @@ in
       bind-key -n C-M-k resize-pane -U 3
       bind-key -n C-M-l resize-pane -R 3
 
-      # keep current working directory across panes
-      bind  c  new-window      -c "#{pane_current_path}"
-      bind  %  split-window -h -c "#{pane_current_path}"
+      # Keep current working directory across panes
+      bind c new-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
       bind '"' split-window -v -c "#{pane_current_path}"
 
-      # options
+      # Options
       set -g mouse on
       setw -g mode-keys vi
-      set-option -g prefix C-Space
       set-option -g status-position top
       set-option -g allow-passthrough on
       set-option -g default-shell /home/bluecosmo/.nix-profile/bin/bash
       set -g pane-active-border-style fg=#FFFFFF
 
-      # copy mode (vim keybinds)
+      # Copy mode (vim keybinds)
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip"
       bind P paste-buffer
       bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip"
 
-      # tpm
+      # TPM Plugins
       set -g @plugin 'tmux-plugins/tpm'
       set -g @plugin 'christoomey/vim-tmux-navigator'
-
-      # status bar theme
       set -g @plugin 'niksingh710/minimal-tmux-status'
+
+      # Minimal tmux status theme
       set -g @minimal-tmux-bg "#ccffff"
       set -g status-left-length 15
       set -g @minimal-tmux-indicator-str "$USER"
@@ -64,9 +62,12 @@ in
       set -g @minimal-tmux-justify "centre"
       bind-key b set-option status
 
-      # run tpm
+      # Run TPM
       run '~/.tmux/plugins/tpm/tpm'
     '';
   };
+
+  # Ensure TPM is installed properly
+  home.file.".tmux/plugins/tpm".source = tpm;
 }
 
