@@ -38,7 +38,7 @@
     };
 
     # Host
-    nixosConfigurations.ccs = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.bluecosmo = nixpkgs.lib.nixosSystem {
       specialArgs = {
         pkgs-stable = import nixpkgs-stable {
           inherit system;
@@ -60,7 +60,7 @@
       ];
     };
 
-    homeConfigurations."ccs" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."bluecosmo" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home-manager/home.nix
